@@ -53,6 +53,7 @@
 	\*---------------------*/
 	--info-container-size: 43%;
 	--content-container-size: calc(100% - var(--info-container-size));
+	--content-container-bg-color: rgb(53, 61, 66);
 
 	--info-container-bg-color: rgb(20, 20, 20);
 	--info-container-bg-shadow: rgba(0, 0, 0, 0.75);
@@ -151,7 +152,7 @@ html, body {
 	height: 100%;
 	margin: 0px;
 	padding: 0;
-	background: rgb(50, 70, 85);
+	background: var(--content-container-bg-color);
 	scroll-snap-align: start;
 }
 
