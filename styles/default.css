@@ -140,8 +140,9 @@ html, body {
 .page-container {
 	height: 100%;
 	scroll-behavior: smooth;
+	//overflow: hidden;
 	overflow: scroll;
-	scroll-snap-type: y proximity;
+	scroll-snap-type: y mandatory;
 }
 
 .page-container::-webkit-scrollbar {
