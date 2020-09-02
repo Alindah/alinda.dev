@@ -33,7 +33,7 @@
 	/* Main body text. Must be clear easy to read. */
 	--main-text-color: rgb(235, 235, 235);
 	--main-font: Muli, Arial, sans-serif;
-	--main-font-size: 16px;
+	--main-font-size: 18px;
 
 	/* Background gradient color for general elements: primary to tertiary color. */
 	--gen-gradient: linear-gradient(rgb(59, 63, 74), rgb(4, 4, 4));
@@ -183,7 +183,8 @@ html, body {
 
 .info-formatter {
 	position: relative;
-	top: 20%;
+	top: 30%;
+    transform: translateY(-30%);
 }
 
 .page-header {
@@ -259,4 +260,13 @@ html, body {
 	width: auto;
 }
 
+
+/*=========\
+|| IMAGES ||
+\=========*/
+
+#img-portrait {
+	border-radius: 50%;
+	max-height: 25vh
+}
 
