@@ -62,7 +62,9 @@ function clickedNav(element) {
 
 // Scroll to indicated page id.
 function scrollToPage(pageId) {
-	document.getElementById(pageId).scrollIntoView();
+	page = document.getElementById(pageId);
+	page.scrollIntoView();
+	switchPage(document.getElementById("nav-" + pageId));
 }
 
 function setActivePage() {
@@ -71,6 +73,8 @@ function setActivePage() {
 	activePageId = activePage.id.replace("nav-", "");
 }
 
+/*
+// Obsolete due to new scrolling mechanic.
 function updateActivePage(element) {
 	// How many pixels away from element top before we trigger the tab switch.
 	var tolerance = window.screen.height * 0.15;
@@ -86,6 +90,7 @@ function updateActivePage(element) {
 		}
 	}
 }
+*/
 
 function switchPage(element) {
 	// Remove active tag from previous active page and set to current page.
