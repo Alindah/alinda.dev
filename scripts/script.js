@@ -29,17 +29,38 @@ function populatePages() {
 }
 
 function initializeEventListeners() {
-	// Prevent scrolling from mouse wheel. Replace with "wheel to next page" behavior.
 	var mouseWheelListener = function(e){mouseWheelToNextPage(e);};
+
+	// Prevent scrolling from mouse wheel. Replace with "wheel to next page" behavior.
 	window.addEventListener("wheel", mouseWheelListener, {passive: false});
+	
+	// Navigate through pages using keyboard.
+	window.addEventListener("keydown", function(e){onKeyboardNav(e)});
 	
 	// User should be allowed to scroll as normal while mousing over content container.
 	scrollableDiv = document.getElementsByClassName("scrolling-content-container");
 
 	for (var i = 0; i < scrollableDiv.length; i++) {
-		scrollableDiv[i].addEventListener("mouseenter", function(e){onMouseEnterScrollableDiv(this, mouseWheelListener);})
-		scrollableDiv[i].addEventListener("mouseleave", function(e){window.addEventListener("wheel", mouseWheelListener, {passive: false})})
+		scrollableDiv[i].addEventListener("mouseenter", function(e){onMouseEnterScrollableDiv(this, mouseWheelListener);});
+		scrollableDiv[i].addEventListener("mouseleave", function(e){window.addEventListener("wheel", mouseWheelListener, {passive: false})});
 	}
+}
+
+function onKeyboardNav(event) {
+	nextPage = pages[activePageId].index;
+
+	// Determine if user is pressing (Left/Up/Page Up) or (Right/Down/Page Down)
+	if (event.keyCode === 37 || event.keyCode === 38 || event.keyCode === 33)
+		nextPage--;
+	else if (event.keyCode === 39 || event.keyCode === 40 || event.keyCode === 34)
+		nextPage++;
+
+	// If user attempts to scroll past all accessible pages, do nothing.
+	if (nextPage >= numOfPages || nextPage < 0)
+		return;
+
+	// Otherwise, scroll to next page.
+	scrollToPage(pageByIndex[nextPage]);
 }
 
 function onMouseEnterScrollableDiv(el, listener) {
