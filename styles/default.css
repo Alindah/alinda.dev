@@ -247,7 +247,7 @@ html, body {
 
 .scrolling-content-container {
 	position: relative;
-	margin: 10%;
+	padding: 40px;
 	height: 80%;
 	overflow: scroll;
 }
