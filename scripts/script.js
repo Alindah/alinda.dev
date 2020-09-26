@@ -1,6 +1,8 @@
 var activePage;
 var activePageId;
+var numOfPages = 0;
 var pages = {};
+var pageByIndex = [];
 var currentPageIndex = 0;
 var lastScrollPos = 0;
 
@@ -11,10 +13,19 @@ function initialize() {
 
 function populatePages() {
 	var pageElements = document.getElementsByClassName("page");
+	numOfPages = pageElements.length;
 
-	// Populate pages dictionary with page ids as key and index as value.
-	for (var i = 0; i < pageElements.length; i++)
-		pages[pageElements[i].id] = i;
+	for (var i = 0; i < numOfPages; i++) {
+		// Populate pages array with data.		
+		pages[pageElements[i].id] = {
+			id: pageElements[i].id,
+			index: i,
+			position: pageElements[i].offsetTop
+		};
+
+		// Array so we can look up a page id by referring to its index.
+		pageByIndex[i] = pageElements[i].id;
+	}
 }
 
 /*============*\
@@ -24,7 +35,7 @@ function setActivePage() {
 	// Get new variables.
 	activePage = document.getElementsByClassName("active-tab")[0];
 	activePageId = activePage.id.replace("nav-", "");
-	currentPageIndex = pages[activePageId];
+	currentPageIndex = pages[activePageId].index;
 }
 
 function scrollToPage(element) {
@@ -35,21 +46,16 @@ function updateActivePage(element) {
 	// How many pixels away from element top before we trigger the tab switch.
 	var tolerance = window.screen.height * 0.15;
 
-	// Positions of top of each page.
-	var homePosition = document.getElementById("home");
-	var aboutPosition = document.getElementById("about");
-	var projPosition = document.getElementById("projects");
-	var conPosition = document.getElementById("contact");
-
 	// How close you need to scroll before it registers as a new page.
-	if (Math.abs(element.scrollTop - homePosition.offsetTop) < tolerance)
-		switchPage(document.getElementById("nav-home"));
-	else if (Math.abs(element.scrollTop - aboutPosition.offsetTop) < tolerance)
-		switchPage(document.getElementById("nav-about"));
-	else if (Math.abs(element.scrollTop - projPosition.offsetTop) < tolerance)
-		switchPage(document.getElementById("nav-projects"));
-	else if (Math.abs(element.scrollTop - conPosition.offsetTop) < tolerance)
-		switchPage(document.getElementById("nav-contact"));
+	// (Note: There's probably a more efficient way to do this, but we only have 4 pages so no big deal.)
+	for (var i = 0; i < numOfPages; i++) {
+		currentPage = pageByIndex[i];
+
+		if (Math.abs(element.scrollTop - pages[currentPage].position) < tolerance) {
+			switchPage(document.getElementById("nav-" + pages[currentPage].id));
+			break;
+		}
+	}
 }
 
 function switchPage(element) {
