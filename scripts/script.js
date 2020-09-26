@@ -1,6 +1,7 @@
 var activePage;
 var activePageId;
-var pages = [];
+var pages = {};
+var currentPageIndex = 0;
 var lastScrollPos = 0;
 
 function initialize() {
@@ -11,9 +12,9 @@ function initialize() {
 function populatePages() {
 	var pageElements = document.getElementsByClassName("page");
 
-	// Populate pages array with ids of each page.
+	// Populate pages dictionary with page ids as key and index as value.
 	for (var i = 0; i < pageElements.length; i++)
-		pages[i] = pageElements[i].id;
+		pages[pageElements[i].id] = i;
 }
 
 /*============*\
@@ -23,6 +24,7 @@ function setActivePage() {
 	// Get new variables.
 	activePage = document.getElementsByClassName("active-tab")[0];
 	activePageId = activePage.id.replace("nav-", "");
+	currentPageIndex = pages[activePageId];
 }
 
 function scrollToPage(element) {
