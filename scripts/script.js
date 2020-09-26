@@ -37,9 +37,19 @@ function initializeEventListeners() {
 	scrollableDiv = document.getElementsByClassName("scrolling-content-container");
 
 	for (var i = 0; i < scrollableDiv.length; i++) {
-		scrollableDiv[i].addEventListener("mouseenter", function(e){window.removeEventListener("wheel", mouseWheelListener);})
+		scrollableDiv[i].addEventListener("mouseenter", function(e){onMouseEnterScrollableDiv(this, mouseWheelListener);})
 		scrollableDiv[i].addEventListener("mouseleave", function(e){window.addEventListener("wheel", mouseWheelListener, {passive: false})})
 	}
+}
+
+function onMouseEnterScrollableDiv(el, listener) {
+	// If this div is small enough to fit on the screen without scrolling,
+	// then keep snapping to next page as normal when scrolling.
+	if (el.scrollHeight == el.offsetHeight)
+		return;
+
+	// Otherwise, allow user to scroll through content without snapping to next page.
+	window.removeEventListener("wheel", listener);
 }
 
 /*============*\
