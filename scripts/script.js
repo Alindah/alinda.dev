@@ -3,12 +3,12 @@ var activePageId;
 var numOfPages = 0;
 var pages = {};
 var pageByIndex = [];
-var currentPageIndex = 0;
 var lastScrollPos = 0;
 
 function initialize() {
 	populatePages();
 	setActivePage();
+	initializeEventListeners();
 }
 
 function populatePages() {
@@ -28,18 +28,37 @@ function populatePages() {
 	}
 }
 
+function initializeEventListeners() {
+	// Prevent scrolling from mouse wheel. Replace with "wheel to next page" behavior.
+	var mouseWheelListener = function(e){mouseWheelToNextPage(e);};
+	window.addEventListener("wheel", mouseWheelListener, {passive: false});
+	
+	// User should be allowed to scroll as normal while mousing over content container.
+	scrollableDiv = document.getElementsByClassName("scrolling-content-container");
+
+	for (var i = 0; i < scrollableDiv.length; i++) {
+		scrollableDiv[i].addEventListener("mouseenter", function(e){window.removeEventListener("wheel", mouseWheelListener);})
+		scrollableDiv[i].addEventListener("mouseleave", function(e){window.addEventListener("wheel", mouseWheelListener, {passive: false})})
+	}
+}
+
 /*============*\
 || NAVIGATION ||
 \*============*/
+// What to do when user clicked on navigation.
+function clickedNav(element) {
+	scrollToPage(element.id.replace("nav-", ""));
+}
+
+// Scroll to indicated page id.
+function scrollToPage(pageId) {
+	document.getElementById(pageId).scrollIntoView();
+}
+
 function setActivePage() {
 	// Get new variables.
 	activePage = document.getElementsByClassName("active-tab")[0];
 	activePageId = activePage.id.replace("nav-", "");
-	currentPageIndex = pages[activePageId].index;
-}
-
-function scrollToPage(element) {
-	document.getElementById(element.id.replace("nav-", "")).scrollIntoView();
 }
 
 function updateActivePage(element) {
@@ -63,4 +82,19 @@ function switchPage(element) {
 	activePage.classList.remove("active-tab");
 	element.classList.add("active-tab");
 	setActivePage();
+}
+
+function mouseWheelToNextPage(e) {
+	// Prevent scrolling from mouse wheel.
+	e.preventDefault();
+
+	// Determine if user is scrolling up or down.
+	nextPage = e.deltaY > 0 ? pages[activePageId].index + 1 : pages[activePageId].index - 1;
+
+	// If user attempts to scroll past all accessible pages, do nothing.
+	if (nextPage >= numOfPages || nextPage < 0)
+		return;
+
+	// Otherwise, scroll to next page.
+	scrollToPage(pageByIndex[nextPage]);
 }
