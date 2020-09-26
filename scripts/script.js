@@ -44,6 +44,9 @@ function initializeEventListeners() {
 		scrollableDiv[i].addEventListener("mouseenter", function(e){onMouseEnterScrollableDiv(this, mouseWheelListener);});
 		scrollableDiv[i].addEventListener("mouseleave", function(e){window.addEventListener("wheel", mouseWheelListener, {passive: false})});
 	}
+
+	// Recalculate page positions after resizing window.
+	window.addEventListener("resize", function(e){populatePages();});
 }
 
 function onKeyboardNav(event) {
