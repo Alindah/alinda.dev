@@ -5,6 +5,7 @@ var pages = {};
 var pageByIndex = [];
 var lastScrollPos = 0;
 var usingDefaultWheelBehavior = false;
+var mouseWheelListener;
 
 function initialize() {
 	populatePages();
@@ -30,10 +31,10 @@ function populatePages() {
 }
 
 function initializeEventListeners() {
-	var mouseWheelListener = function(e){mouseWheelToNextPage(e);};
+	mouseWheelListener = function(e){mouseWheelToNextPage(e);};
 
 	// Prevent scrolling from mouse wheel. Replace with "wheel to next page" behavior.
-	window.addEventListener("wheel", mouseWheelListener, {passive: false});
+	disableDefaultWheel();
 	
 	// Navigate through pages using keyboard.
 	window.addEventListener("keydown", function(e){onKeyboardNav(e)});
@@ -42,8 +43,8 @@ function initializeEventListeners() {
 	scrollableDiv = document.getElementsByClassName("scrolling-content-container");
 
 	for (var i = 0; i < scrollableDiv.length; i++) {
-		scrollableDiv[i].addEventListener("mouseenter", function(e){onMouseEnterScrollableDiv(this, mouseWheelListener);});
-		scrollableDiv[i].addEventListener("mouseleave", function(e){onMouseLeaveScrollableDiv(mouseWheelListener)});
+		scrollableDiv[i].addEventListener("mouseenter", function(e){enabledDefaultWheel(this);});
+		scrollableDiv[i].addEventListener("mouseleave", function(e){disableDefaultWheel()});
 	}
 
 	// Recalculate page positions after resizing window.
@@ -67,19 +68,19 @@ function onKeyboardNav(event) {
 	scrollToPage(pageByIndex[nextPage]);
 }
 
-function onMouseEnterScrollableDiv(el, listener) {
+function enabledDefaultWheel(el) {
 	// If this div is small enough to fit on the screen without scrolling,
 	// then keep snapping to next page as normal when scrolling.
 	if (el.scrollHeight == el.offsetHeight)
 		return;
 
 	// Otherwise, allow user to scroll through content without snapping to next page.
-	window.removeEventListener("wheel", listener);
+	window.removeEventListener("wheel", mouseWheelListener);
 	usingDefaultWheelBehavior = true;
 }
 
-function onMouseLeaveScrollableDiv(listener) {
-	window.addEventListener("wheel", listener, {passive: false});
+function disableDefaultWheel() {
+	window.addEventListener("wheel", mouseWheelListener, {passive: false});
 	usingDefaultWheelBehavior = false;
 }
 
