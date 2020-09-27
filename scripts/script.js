@@ -43,7 +43,7 @@ function initializeEventListeners() {
 	scrollableDiv = document.getElementsByClassName("scrolling-content-container");
 
 	for (var i = 0; i < scrollableDiv.length; i++) {
-		scrollableDiv[i].addEventListener("mouseenter", function(e){enabledDefaultWheel(this);});
+		scrollableDiv[i].addEventListener("mouseenter", function(e){enableDefaultWheel(this);});
 		scrollableDiv[i].addEventListener("mouseleave", function(e){disableDefaultWheel()});
 	}
 
@@ -68,7 +68,7 @@ function onKeyboardNav(event) {
 	scrollToPage(pageByIndex[nextPage]);
 }
 
-function enabledDefaultWheel(el) {
+function enableDefaultWheel(el) {
 	// If this div is small enough to fit on the screen without scrolling,
 	// then keep snapping to next page as normal when scrolling.
 	if (el.scrollHeight == el.offsetHeight)
