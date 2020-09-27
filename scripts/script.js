@@ -4,6 +4,7 @@ var numOfPages = 0;
 var pages = {};
 var pageByIndex = [];
 var lastScrollPos = 0;
+var usingDefaultWheelBehavior = false;
 
 function initialize() {
 	populatePages();
@@ -42,7 +43,7 @@ function initializeEventListeners() {
 
 	for (var i = 0; i < scrollableDiv.length; i++) {
 		scrollableDiv[i].addEventListener("mouseenter", function(e){onMouseEnterScrollableDiv(this, mouseWheelListener);});
-		scrollableDiv[i].addEventListener("mouseleave", function(e){window.addEventListener("wheel", mouseWheelListener, {passive: false})});
+		scrollableDiv[i].addEventListener("mouseleave", function(e){onMouseLeaveScrollableDiv(mouseWheelListener)});
 	}
 
 	// Recalculate page positions after resizing window.
@@ -74,6 +75,12 @@ function onMouseEnterScrollableDiv(el, listener) {
 
 	// Otherwise, allow user to scroll through content without snapping to next page.
 	window.removeEventListener("wheel", listener);
+	usingDefaultWheelBehavior = true;
+}
+
+function onMouseLeaveScrollableDiv(listener) {
+	window.addEventListener("wheel", listener, {passive: false});
+	usingDefaultWheelBehavior = false;
 }
 
 /*============*\
@@ -88,7 +95,9 @@ function clickedNav(element) {
 function scrollToPage(pageId) {
 	page = document.getElementById(pageId);
 	page.scrollIntoView();
-	//switchPage(document.getElementById("nav-" + pageId));
+	
+	if (!usingDefaultWheelBehavior)
+		switchPage(document.getElementById("nav-" + pageId));
 }
 
 function setActivePage() {
@@ -99,6 +108,9 @@ function setActivePage() {
 
 // Reimplemented. Page doesn't always update properly otherwise.
 function updateActivePage(element) {
+	if (!usingDefaultWheelBehavior)
+		return;
+
 	// How many pixels away from element top before we trigger the tab switch.
 	var tolerance = window.screen.height * 0.15;
 
