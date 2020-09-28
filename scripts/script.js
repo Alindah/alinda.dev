@@ -6,6 +6,7 @@ var pageByIndex = [];
 var lastScrollPos = 0;
 var usingDefaultWheelBehavior = false;
 var mouseWheelListener;
+var isDoneScrolling = true;
 
 function initialize() {
 	populatePages();
@@ -68,10 +69,10 @@ function onKeyboardNav(event) {
 	scrollToPage(pageByIndex[nextPage]);
 }
 
-function enableDefaultWheel(el) {
+function enableDefaultWheel(el = null) {
 	// If this div is small enough to fit on the screen without scrolling,
 	// then keep snapping to next page as normal when scrolling.
-	if (el.scrollHeight == el.offsetHeight)
+	if (el && el.scrollHeight == el.offsetHeight)
 		return;
 
 	// Otherwise, allow user to scroll through content without snapping to next page.
@@ -99,6 +100,9 @@ function scrollToPage(pageId) {
 	
 	if (!usingDefaultWheelBehavior)
 		switchPage(document.getElementById("nav-" + pageId));
+
+	// Reenable disabling of default wheel behavior after done scrolling.
+	setTimeout(function(){isDoneScrolling = true;}, 500);
 }
 
 function setActivePage() {
@@ -138,6 +142,9 @@ function mouseWheelToNextPage(e) {
 	// Prevent scrolling from mouse wheel.
 	e.preventDefault();
 
+	if (!isDoneScrolling)
+		return;
+
 	// Determine if user is scrolling up or down.
 	nextPage = e.deltaY > 0 ? pages[activePageId].index + 1 : pages[activePageId].index - 1;
 
@@ -146,5 +153,6 @@ function mouseWheelToNextPage(e) {
 		return;
 
 	// Otherwise, scroll to next page.
+	isDoneScrolling = false;
 	scrollToPage(pageByIndex[nextPage]);
 }
