@@ -264,11 +264,18 @@ html, body {
 	width: auto;
 }
 
+/*=====================\
+|| SOCIAL MEDIA LINKS ||
+\=====================*/
+.sm-icon {
+	padding: 10px;
+	width: 50px;
+	fill: var(--main-text-color);
+}
 
 /*=========\
 || IMAGES ||
 \=========*/
-
 #img-portrait {
 	border-radius: 50%;
 	max-height: 25vh

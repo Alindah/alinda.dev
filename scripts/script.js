@@ -1,11 +1,15 @@
+// Page Variables
 var activePage;
 var activePageId;
 var numOfPages = 0;
 var pages = {};
 var pageByIndex = [];
+
+// Scrolling Variables
 var lastScrollPos = 0;
-var usingDefaultWheelBehavior = false;
+var pageDelayMS = 500;
 var mouseWheelListener;
+var usingDefaultWheelBehavior = false;
 var isDoneScrolling = true;
 
 function initialize() {
@@ -102,7 +106,7 @@ function scrollToPage(pageId) {
 		switchPage(document.getElementById("nav-" + pageId));
 
 	// Reenable disabling of default wheel behavior after done scrolling.
-	setTimeout(function(){isDoneScrolling = true;}, 500);
+	setTimeout(function(){isDoneScrolling = true;}, pageDelayMS);
 }
 
 function setActivePage() {
