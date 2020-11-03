@@ -271,7 +271,7 @@ html, body {
 /*==========\
 || COMPACT ||
 \==========*/
-@media (max-width:960px) {
+@media (max-width: 960px) {
 	.page-container {
 		scroll-snap-type: none;
 	}
