@@ -112,7 +112,9 @@ html, body {
 /* Symbols that appear next to navigation links when mousing over. 
    Invisible by default. */
 .nav-select-decor {
-	display: none;
+	display: inline;
+	opacity: 0;
+	transition: opacity 0.25s;
 	vertical-align: 1px;
 }
 
@@ -122,7 +124,8 @@ html, body {
 
 /* Make symbols appear when mousing over. */
 .nav:hover .nav-select-decor {
-	display: inline;
+	opacity: 1;
+	transition: opacity 0.4s;
 }
 
 /*=================\
@@ -182,13 +185,13 @@ html, body {
 }
 
 .page-title {
-	font-size: 7vw;
+	font-size: calc(50px + 2vw);
 	font-family: "Satisfy", sans-serif;
 	text-shadow: 0.02em 0.02em var(--text-shadow-color);
 }
 
 .page-tagline {
-	font-size: 1.9vw;
+	font-size: calc(15px + 0.75vw);
 	font-family: "Oswald", monospace;
 	text-transform: uppercase;
 	text-shadow: 0.05em 0.05em var(--text-shadow-color);
@@ -215,7 +218,7 @@ html, body {
 }
 
 .small-text {
-	font-size: 10px;
+	font-size: 12px;
 }
 
 /*====================\
@@ -255,7 +258,7 @@ html, body {
 || SOCIAL MEDIA LINKS ||
 \=====================*/
 .sm-icon {
-	padding: 10px;
+	margin: 15px;
 	width: 50px;
 	fill: var(--main-text-color);
 }
@@ -265,7 +268,8 @@ html, body {
 \=========*/
 #img-portrait {
 	border-radius: 50%;
-	max-height: 25vh
+	width: 200px;
+	height: auto;
 }
 
 /*==========\

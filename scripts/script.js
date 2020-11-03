@@ -71,6 +71,14 @@ function initializeEventListeners() {
 }
 
 function onKeyboardNav(event) {
+	// Navigation keys that have an affect on the page when pressed.
+	// PgUp, PgDown, Left, Up, Right, Down
+	validKeys = [33, 34, 37, 38, 39, 40];
+
+	// Prevents strange bug that jumps page to top when pressing some keys.
+	if (!(validKeys.includes(event.keyCode)))
+		return;
+
 	nextPage = pages[activePageId].index;
 
 	// Determine if user is pressing (Left/Up/Page Up) or (Right/Down/Page Down)
