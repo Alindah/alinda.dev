@@ -1,3 +1,6 @@
+// Small Screen Variables
+const compactSize = 960;
+
 // Page Variables
 var activePage;
 var activePageId;
@@ -16,6 +19,10 @@ function initialize() {
 	populatePages();
 	setActivePage();
 	initializeEventListeners();
+}
+
+function isCompact() {
+	return window.innerWidth <= compactSize;
 }
 
 function populatePages() {
