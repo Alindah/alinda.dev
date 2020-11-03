@@ -281,3 +281,23 @@ html, body {
 	max-height: 25vh
 }
 
+/*==========\
+|| COMPACT ||
+\==========*/
+@media (max-width:960px) {
+	.page-container {
+		scroll-snap-type: none;
+	}
+
+	.navigation-container {
+		display: none;
+	}
+
+	.info-container {
+		width: 100%;
+	}
+
+	.content-container {
+		width: 100%;
+	}
+}

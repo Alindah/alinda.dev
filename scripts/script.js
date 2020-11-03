@@ -25,12 +25,20 @@ function isCompact() {
 	return window.innerWidth <= compactSize;
 }
 
+function makeCompactFriendly() {
+	if (isCompact())
+		enableDefaultWheel();
+	else
+		disableDefaultWheel();
+}
+
 function populatePages() {
 	var pageElements = document.getElementsByClassName("page");
 	numOfPages = pageElements.length;
 
 	for (var i = 0; i < numOfPages; i++) {
-		// Populate pages array with data.		
+		// Populate pages array with data.
+		console.log(pageElements[i].id);
 		pages[pageElements[i].id] = {
 			id: pageElements[i].id,
 			index: i,
@@ -60,7 +68,7 @@ function initializeEventListeners() {
 	}
 
 	// Recalculate page positions after resizing window.
-	window.addEventListener("resize", function(e){populatePages();});
+	window.addEventListener("resize", function(e){makeCompactFriendly(); populatePages();});
 }
 
 function onKeyboardNav(event) {
@@ -92,6 +100,9 @@ function enableDefaultWheel(el = null) {
 }
 
 function disableDefaultWheel() {
+	if (isCompact())
+		return;
+	
 	window.addEventListener("wheel", mouseWheelListener, {passive: false});
 	usingDefaultWheelBehavior = false;
 }
