@@ -258,7 +258,7 @@ html, body {
 || SOCIAL MEDIA LINKS ||
 \=====================*/
 .sm-icon {
-	padding: 10px;
+	margin: 15px;
 	width: 50px;
 	fill: var(--main-text-color);
 }
