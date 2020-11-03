@@ -10,26 +10,13 @@
 	 /*----------------------*\
 	/* COLOR SCHEME VARIABLES *\
 	\*------------------------*/
-	/* Primary is medium, main color.
-	   Secondary is lighter color.
-	   Tertiary is darker color.
-	   Accent is a highlight or different color. 
-	   Shadow colors affect shadows in navigation bar.
-	*/
-	--primary-color: rgb(51, 102, 153);
-	--secondary-color: rgb(76, 127, 178);
-	--tertiary-color: rgb(12, 41, 71);
 	--accent-color: rgb(0, 0, 0);
 	--shadow-color: rgba(0, 0, 0, 0.5);
 	--text-shadow-color: rgb(143, 144, 156);
-	--weak-shadow-color: rgba(0, 0, 0, 0.3);
 
 	 /*--------------*\
 	/* BODY VARIABLES *\
 	\*----------------*/
-	/* Color of background used in main body. */
-	--main-bg-color: rgb(74, 81, 97);
-
 	/* Main body text. Must be clear easy to read. */
 	--main-text-color: rgb(235, 235, 235);
 	--main-font: Muli, Arial, sans-serif;
@@ -45,18 +32,18 @@
 	--nav-font-size: 15px;
 
 	/* Colors of text in navigation bar. */
-	--nav-highlight-color: rgb(255, 255, 255);
+	--nav-highlight-color: rgba(255, 255, 255, 1);
 	--nav-shadow-color: 0px 0px 4px rgba(0, 0, 0, 1);
 
 	 /*-------------------*\
 	/* PAGE SIZE VARIABLES *\
 	\*---------------------*/
-	--info-container-size: 43%;
-	--content-container-size: calc(100% - var(--info-container-size));
-	--content-container-bg-color: rgb(53, 61, 66);
-
-	--info-container-bg-color: rgb(20, 20, 20);
+	--info-container-bg-color: rgba(20, 20, 20, 1);
 	--info-container-bg-shadow: rgba(0, 0, 0, 0.75);
+	--info-container-size: 43%;
+
+	--content-container-size: calc(100% - var(--info-container-size));
+	--content-container-bg-color: rgba(53, 61, 66, 0.75);
 }
 
 /*==========\
@@ -284,7 +271,7 @@ html, body {
 /*==========\
 || COMPACT ||
 \==========*/
-@media (max-width:960px) {
+@media (max-width: 960px) {
 	.page-container {
 		scroll-snap-type: none;
 	}

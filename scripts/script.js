@@ -38,7 +38,6 @@ function populatePages() {
 
 	for (var i = 0; i < numOfPages; i++) {
 		// Populate pages array with data.
-		console.log(pageElements[i].id);
 		pages[pageElements[i].id] = {
 			id: pageElements[i].id,
 			index: i,
