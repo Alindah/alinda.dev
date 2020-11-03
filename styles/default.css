@@ -112,7 +112,9 @@ html, body {
 /* Symbols that appear next to navigation links when mousing over. 
    Invisible by default. */
 .nav-select-decor {
-	display: none;
+	display: inline;
+	opacity: 0;
+	transition: opacity 0.25s;
 	vertical-align: 1px;
 }
 
@@ -122,7 +124,8 @@ html, body {
 
 /* Make symbols appear when mousing over. */
 .nav:hover .nav-select-decor {
-	display: inline;
+	opacity: 1;
+	transition: opacity 0.4s;
 }
 
 /*=================\
