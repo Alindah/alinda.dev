@@ -289,6 +289,10 @@ html, body {
 		scroll-snap-type: none;
 	}
 
+	.content-container {
+		height: auto;
+	}
+
 	.navigation-container {
 		display: none;
 	}
