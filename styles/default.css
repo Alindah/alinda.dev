@@ -185,13 +185,13 @@ html, body {
 }
 
 .page-title {
-	font-size: 7vw;
+	font-size: calc(50px + 2vw);
 	font-family: "Satisfy", sans-serif;
 	text-shadow: 0.02em 0.02em var(--text-shadow-color);
 }
 
 .page-tagline {
-	font-size: 1.9vw;
+	font-size: calc(15px + 0.75vw);
 	font-family: "Oswald", monospace;
 	text-transform: uppercase;
 	text-shadow: 0.05em 0.05em var(--text-shadow-color);
@@ -218,7 +218,7 @@ html, body {
 }
 
 .small-text {
-	font-size: 10px;
+	font-size: 12px;
 }
 
 /*====================\
@@ -268,7 +268,8 @@ html, body {
 \=========*/
 #img-portrait {
 	border-radius: 50%;
-	max-height: 25vh
+	width: 200px;
+	height: auto;
 }
 
 /*==========\
