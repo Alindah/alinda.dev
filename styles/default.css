@@ -136,7 +136,7 @@ html, body {
 /*=================\
 || PAGE CONTAINER ||
 \=================*/
-.page-container {
+#page-container {
 	height: 100%;
 	scroll-behavior: smooth;
 	//overflow: hidden;
@@ -144,7 +144,7 @@ html, body {
 	scroll-snap-type: y mandatory;
 }
 
-.page-container::-webkit-scrollbar {
+#page-container::-webkit-scrollbar {
 	display: none;
 }
 
@@ -277,7 +277,7 @@ html, body {
 || COMPACT ||
 \==========*/
 @media (max-width: 960px) {
-	.page-container {
+	#page-container {
 		scroll-snap-type: none;
 	}
 
