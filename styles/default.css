@@ -69,6 +69,11 @@ html, body {
 	overflow: hidden;
 }
 
+::selection {
+	color: var(--info-container-bg-color);
+	background-color: rgba(190, 210, 225, 0.35);
+}
+
 /*=============\
 || NAVIGATION ||
 \=============*/
@@ -131,7 +136,7 @@ html, body {
 /*=================\
 || PAGE CONTAINER ||
 \=================*/
-.page-container {
+#page-container {
 	height: 100%;
 	scroll-behavior: smooth;
 	//overflow: hidden;
@@ -139,7 +144,7 @@ html, body {
 	scroll-snap-type: y mandatory;
 }
 
-.page-container::-webkit-scrollbar {
+#page-container::-webkit-scrollbar {
 	display: none;
 }
 
@@ -163,11 +168,6 @@ html, body {
 	height: 100%;
 	//box-shadow: 0px 0px 3px 3px var(--shadow-color);
 	text-align: center;
-}
-
-.info-container ::selection {
-	color: black;
-	background-color: rgba(190, 210, 225, 0.5);
 }
 
 .info-container-full {
@@ -213,10 +213,6 @@ html, body {
 	box-shadow: 0 0px 48px 8px var(--info-container-bg-shadow) inset;
 }
 
-#home-container ::selection {
-	background: rgba(0, 0, 0, 0.4);
-}
-
 .small-text {
 	font-size: 12px;
 }
@@ -240,10 +236,15 @@ html, body {
 	padding: 40px;
 	height: 80%;
 	overflow: scroll;
+
+	/* Firefox, IE */
+	scrollbar-width: none;
+	-ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
 .scrolling-content-container::-webkit-scrollbar {
-  display: none;
+	/* Chrome, Safari, Edge */
+	display: none;
 }
 
 .image-slide {
@@ -276,7 +277,7 @@ html, body {
 || COMPACT ||
 \==========*/
 @media (max-width: 960px) {
-	.page-container {
+	#page-container {
 		scroll-snap-type: none;
 	}
 

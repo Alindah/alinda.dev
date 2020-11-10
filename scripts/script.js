@@ -7,18 +7,29 @@ var activePageId;
 var numOfPages = 0;
 var pages = {};
 var pageByIndex = [];
+var pageByPosition = {};
+var pageContainerEl;
 
 // Scrolling Variables
 var lastScrollPos = 0;
-var pageDelayMS = 500;
+var pageDelayMS = 750;
 var mouseWheelListener;
 var usingDefaultWheelBehavior = false;
 var isDoneScrolling = true;
 
+// Custom Events
+let pageChangeEvent = new CustomEvent("changedPage", {detail: {}});
+
 function initialize() {
+	pageContainerEl = document.getElementById("page-container");
+
 	populatePages();
 	setActivePage();
 	initializeEventListeners();
+
+	// Some browsers stay in last position when refreshing the site. Scroll to Home if so.
+	if (pageContainerEl.scrollTop != 0)
+		scrollToPage("home");
 }
 
 function isCompact() {
@@ -35,6 +46,7 @@ function makeCompactFriendly() {
 function populatePages() {
 	var pageElements = document.getElementsByClassName("page");
 	numOfPages = pageElements.length;
+	pageByPosition = {};		// Clear every time we resize to save space.
 
 	for (var i = 0; i < numOfPages; i++) {
 		// Populate pages array with data.
@@ -46,6 +58,9 @@ function populatePages() {
 
 		// Array so we can look up a page id by referring to its index.
 		pageByIndex[i] = pageElements[i].id;
+
+		// Look up pages by its position.
+		pageByPosition[pageElements[i].offsetTop] = pageElements[i].id;
 	}
 }
 
@@ -68,6 +83,9 @@ function initializeEventListeners() {
 
 	// Recalculate page positions after resizing window.
 	window.addEventListener("resize", function(e){makeCompactFriendly(); populatePages();});
+
+	// Listen for whenever the active page changes.
+	window.addEventListener("changedPage", function(e){updateActivePage(pageContainerEl);});
 }
 
 function onKeyboardNav(event) {
@@ -131,7 +149,7 @@ function scrollToPage(pageId) {
 		switchPage(document.getElementById("nav-" + pageId));
 
 	// Reenable disabling of default wheel behavior after done scrolling.
-	setTimeout(function(){isDoneScrolling = true;}, pageDelayMS);
+	setTimeout(function(){isDoneScrolling = true; window.dispatchEvent(pageChangeEvent);}, pageDelayMS);
 }
 
 function setActivePage() {
@@ -140,23 +158,28 @@ function setActivePage() {
 	activePageId = activePage.id.replace("nav-", "");
 }
 
-// Reimplemented. Page doesn't always update properly otherwise.
-function updateActivePage(element) {
+function updateActivePage(el) {
+	// How many pixels away from element top before we trigger the tab switch.
+	var tolerance = window.screen.height * 0.3;
+
+	// If scrolling by mouse wheel is stalled and active page tab is set without scrolling,
+	// go ahead and scroll to appropriate page.
+	if (Math.abs(el.scrollTop - pages[activePageId].position) >= tolerance)
+		scrollToPage(activePageId);
+}
+
+// Deal with some instances where active page tab doesn't update due to manual scrolling.
+function updateActivePageEdgeCase() {
 	if (!usingDefaultWheelBehavior)
 		return;
 
-	// How many pixels away from element top before we trigger the tab switch.
-	var tolerance = window.screen.height * 0.15;
+	// If current page does not match up with active tab, update the tab to match the page.
+	if (isDoneScrolling && pages[activePageId].position != pageContainerEl.scrollTop) {
+		if (!(pageContainerEl.scrollTop in pageByPosition))
+			return;
 
-	// How close you need to scroll before it registers as a new page.
-	// (Note: There's probably a more efficient way to do this, but we only have 4 pages so no big deal.)
-	for (var i = 0; i < numOfPages; i++) {
-		currentPage = pageByIndex[i];
-
-		if (Math.abs(element.scrollTop - pages[currentPage].position) < tolerance) {
-			switchPage(document.getElementById("nav-" + pages[currentPage].id));
-			break;
-		}
+		actualPageId = pageByPosition[pageContainerEl.scrollTop];
+		switchPage(document.getElementById("nav-" + actualPageId));
 	}
 }
 
