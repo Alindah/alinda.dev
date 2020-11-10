@@ -69,6 +69,11 @@ html, body {
 	overflow: hidden;
 }
 
+::selection {
+	color: var(--info-container-bg-color);
+	background-color: rgba(190, 210, 225, 0.35);
+}
+
 /*=============\
 || NAVIGATION ||
 \=============*/
@@ -165,11 +170,6 @@ html, body {
 	text-align: center;
 }
 
-.info-container ::selection {
-	color: black;
-	background-color: rgba(190, 210, 225, 0.5);
-}
-
 .info-container-full {
 	width: 100%;
 }
@@ -211,10 +211,6 @@ html, body {
 #home-container {
 	background-color: transparent;
 	box-shadow: 0 0px 48px 8px var(--info-container-bg-shadow) inset;
-}
-
-#home-container ::selection {
-	background: rgba(0, 0, 0, 0.4);
 }
 
 .small-text {
