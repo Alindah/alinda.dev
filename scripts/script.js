@@ -7,6 +7,7 @@ var activePageId;
 var numOfPages = 0;
 var pages = {};
 var pageByIndex = [];
+var pageContainerEl;
 
 // Scrolling Variables
 var lastScrollPos = 0;
@@ -15,11 +16,19 @@ var mouseWheelListener;
 var usingDefaultWheelBehavior = false;
 var isDoneScrolling = true;
 
+// Custom Events
+let pageChangeEvent = new CustomEvent("changedPage", {detail: {}});
+
 function initialize() {
+	pageContainerEl = document.getElementById("page-container");
+
 	populatePages();
 	setActivePage();
-	scrollToPage("home");		// Some browsers stay in last position when refreshing the site.
 	initializeEventListeners();
+
+	// Some browsers stay in last position when refreshing the site. Scroll to Home if so.
+	if (pageContainerEl.scrollTop != 0)
+		scrollToPage("home");
 }
 
 function isCompact() {
@@ -69,6 +78,9 @@ function initializeEventListeners() {
 
 	// Recalculate page positions after resizing window.
 	window.addEventListener("resize", function(e){makeCompactFriendly(); populatePages();});
+
+	// Listen for whenever the active page changes.
+	window.addEventListener("changedPage", function(e){updateActivePage(pageContainerEl);});
 }
 
 function onKeyboardNav(event) {
@@ -132,7 +144,7 @@ function scrollToPage(pageId) {
 		switchPage(document.getElementById("nav-" + pageId));
 
 	// Reenable disabling of default wheel behavior after done scrolling.
-	setTimeout(function(){isDoneScrolling = true;}, pageDelayMS);
+	setTimeout(function(){isDoneScrolling = true; window.dispatchEvent(pageChangeEvent);}, pageDelayMS);
 }
 
 function setActivePage() {
@@ -141,8 +153,18 @@ function setActivePage() {
 	activePageId = activePage.id.replace("nav-", "");
 }
 
-// Reimplemented. Page doesn't always update properly otherwise.
-function updateActivePage(element) {
+function updateActivePage(el) {
+	// How many pixels away from element top before we trigger the tab switch.
+	var tolerance = window.screen.height * 0.3;
+
+	// If scrolling by mouse wheel is stalled and active page tab is set without scrolling,
+	// go ahead and scroll to appropriate page.
+	if (Math.abs(el.scrollTop - pages[activePageId].position) >= tolerance)
+		scrollToPage(activePageId);
+}
+
+// Decrepit function. No longer required after creating custom event for page changes.
+function updateActivePageOld(element) {
 	if (!usingDefaultWheelBehavior)
 		return;
 
