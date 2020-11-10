@@ -18,6 +18,7 @@ var isDoneScrolling = true;
 function initialize() {
 	populatePages();
 	setActivePage();
+	scrollToPage("home");		// Some browsers stay in last position when refreshing the site.
 	initializeEventListeners();
 }
 
