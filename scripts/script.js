@@ -10,7 +10,7 @@ var pageByIndex = [];
 
 // Scrolling Variables
 var lastScrollPos = 0;
-var pageDelayMS = 500;
+var pageDelayMS = 750;
 var mouseWheelListener;
 var usingDefaultWheelBehavior = false;
 var isDoneScrolling = true;
