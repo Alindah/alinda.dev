@@ -21,7 +21,12 @@
 	--main-text-color: rgb(235, 235, 235);
 	--main-font: Muli, Arial, sans-serif;
 	--main-font-size: 18px;
-	--emphasis-text-color: rgb(9, 10, 10);
+
+	/* Text colors to emphasize */
+	--emphasis-text-color: rgba(134, 204, 230, 1);
+	--emphasis-dark-text-color: rgba(9, 10, 10, 1);
+	--emphasis-highlight-color: rgba(146, 250, 255, 1);
+	--emphasis-dull-color: rgba(49, 109, 132, 1);
 
 	/* Background gradient color for general elements: primary to tertiary color. */
 	--gen-gradient: linear-gradient(rgb(59, 63, 74), rgb(4, 4, 4));
@@ -47,10 +52,10 @@
 	--content-container-bg-color: rgba(53, 61, 66, 0.75);
 
 	 /*-----------------*\
-	/* PROJECT VARIABLES *\
+	/* SECTION VARIABLES *\
 	\*-------------------*/
-	--proj-header-color: rgba(20, 20, 20, 0.35);
-	--proj-content-bg-color: rgba(255, 255, 255, 0.15);
+	--section-header-color: rgba(20, 20, 20, 0.35);
+	--section-content-bg-color: rgba(255, 255, 255, 0.15);
 }
 
 /*==========\
@@ -82,21 +87,21 @@ html, body {
 }
 
 a:link {
-	color: rgba(134, 204, 230, 1);
+	color: var(--emphasis-text-color);
 	transition: color 0.25s;
 }
 
 a:visited {
-	color: rgba(134, 204, 230, 1);
+	color: var(--emphasis-text-color);
 }
 
 a:hover {
-	color: rgba(146, 250, 255, 1);
+	color: var(--emphasis-highlight-color);
 	transition: color 0.1s;
 }
 
 a:active {
-	color: rgba(49, 109, 132, 1);
+	color: var(--emphasis-dull-color);
 	transition: color 0.1s;
 }
 
@@ -243,6 +248,15 @@ a:active {
 	font-size: 12px;
 }
 
+.em-text {
+	color: var(--emphasis-text-color);
+	//text-transform: uppercase;
+}
+
+.em-text-dark {
+	color: var(--emphasis-dark-text-color);
+}
+
 /*====================\
 || CONTENT CONTAINER ||
 \====================*/
@@ -285,18 +299,27 @@ a:active {
 
 }
 
-.proj-cat-header {
-	color: var(--emphasis-text-color);
+/*===========\
+|| SECTIONS ||
+\===========*/
+.section-header {
+	color: var(--emphasis-dark-text-color);
 	text-transform: uppercase;
 	font-family: "Oswald", "Fira Sans Extra Condensed", "Bebas Neue", monospace;
 	font-size: calc(1.25 * var(--main-font-size));
-	background-color: var(--proj-header-color);
 	padding: 4px 8px 4px 8px;
 }
 
-.proj-content {
+.section-content {
 	padding: 12px;
-	background-color: var(--proj-content-bg-color);
+}
+
+.section-color-dark {
+	background-color: var(--section-header-color);
+}
+
+.section-color-light {
+	background-color: var(--section-content-bg-color);
 }
 
 /*=========\
