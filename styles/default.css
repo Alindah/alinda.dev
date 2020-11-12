@@ -46,10 +46,11 @@
 	--content-container-size: calc(100% - var(--info-container-size));
 	--content-container-bg-color: rgba(53, 61, 66, 0.75);
 
-	 /*--------------*\
-	/* MISC VARIABLES *\
-	\*----------------*/
-	--category-header-color: rgba(20, 20, 20, 0.35);
+	 /*-----------------*\
+	/* PROJECT VARIABLES *\
+	\*-------------------*/
+	--proj-header-color: rgba(20, 20, 20, 0.35);
+	--proj-content-bg-color: rgba(255, 255, 255, 0.15);
 }
 
 /*==========\
@@ -280,17 +281,22 @@ a:active {
 	width: auto;
 }
 
+.proj-cat-container {
+
+}
+
 .proj-cat-header {
 	color: var(--emphasis-text-color);
 	text-transform: uppercase;
 	font-family: "Oswald", "Fira Sans Extra Condensed", "Bebas Neue", monospace;
 	font-size: calc(1.25 * var(--main-font-size));
-	background-color: var(--category-header-color);
+	background-color: var(--proj-header-color);
 	padding: 4px 8px 4px 8px;
 }
 
-.proj-cat-container {
-
+.proj-content {
+	padding: 12px;
+	background-color: var(--proj-content-bg-color);
 }
 
 /*=========\
