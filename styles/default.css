@@ -74,6 +74,25 @@ html, body {
 	background-color: rgba(190, 210, 225, 0.35);
 }
 
+a:link {
+	color: rgba(134, 204, 230, 1);
+	transition: color 0.25s;
+}
+
+a:visited {
+	color: rgba(134, 204, 230, 1);
+}
+
+a:hover {
+	color: rgba(146, 250, 255, 1);
+	transition: color 0.1s;
+}
+
+a:active {
+	color: rgba(49, 109, 132, 1);
+	transition: color 0.1s;
+}
+
 /*=============\
 || NAVIGATION ||
 \=============*/
