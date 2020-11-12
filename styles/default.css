@@ -1,7 +1,7 @@
 /*=========\
 || IMPORT ||
 \=========*/
-@import url('https://fonts.googleapis.com/css?family=Muli|Oswald|Satisfy|Zhi+Mang+Xing&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Muli|Oswald|Satisfy|Zhi+Mang+Xing|Fira+Sans+Extra+Condensed:wght@500|Bebas+Neue&display=swap');
 
 /*============\
 || VARIABLES ||
@@ -21,6 +21,7 @@
 	--main-text-color: rgb(235, 235, 235);
 	--main-font: Muli, Arial, sans-serif;
 	--main-font-size: 18px;
+	--emphasis-text-color: rgb(9, 10, 10);
 
 	/* Background gradient color for general elements: primary to tertiary color. */
 	--gen-gradient: linear-gradient(rgb(59, 63, 74), rgb(4, 4, 4));
@@ -272,6 +273,13 @@ a:active {
 	min-width: 100%;
 	height: auto;
 	width: auto;
+}
+
+.proj-cat-header {
+	color: var(--emphasis-text-color);
+	text-transform: uppercase;
+	font-family: "Oswald", "Fira Sans Extra Condensed", "Bebas Neue", monospace;
+	font-size: calc(1.25 * var(--main-font-size));
 }
 
 /*=====================\
