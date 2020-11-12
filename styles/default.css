@@ -45,6 +45,11 @@
 
 	--content-container-size: calc(100% - var(--info-container-size));
 	--content-container-bg-color: rgba(53, 61, 66, 0.75);
+
+	 /*--------------*\
+	/* MISC VARIABLES *\
+	\*----------------*/
+	--category-header-color: rgba(20, 20, 20, 0.35);
 }
 
 /*==========\
@@ -280,17 +285,12 @@ a:active {
 	text-transform: uppercase;
 	font-family: "Oswald", "Fira Sans Extra Condensed", "Bebas Neue", monospace;
 	font-size: calc(1.25 * var(--main-font-size));
+	background-color: var(--category-header-color);
+	padding: 4px 8px 4px 8px;
 }
 
-/*=====================\
-|| SOCIAL MEDIA LINKS ||
-\=====================*/
-.sm-container {
-	margin: 15px;
-}
+.proj-cat-container {
 
-.all-sm-container {
-	display: inline-flex;
 }
 
 /*=========\
@@ -305,6 +305,14 @@ a:active {
 .svg-icon {
 	width: 50px;
 	fill: var(--main-text-color);
+}
+
+.svg-container {
+	margin: 15px;
+}
+
+.all-svg-container {
+	display: inline-flex;
 }
 
 /*==========\
