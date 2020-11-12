@@ -293,13 +293,13 @@ a:active {
 	text-transform: uppercase;
 	font-family: "Oswald", "Fira Sans Extra Condensed", "Bebas Neue", monospace;
 	font-size: calc(1.25 * var(--main-font-size));
-	background-color: var(--proj-header-color);
+	background-color: var(--section-header-color);
 	padding: 4px 8px 4px 8px;
 }
 
 .section-content {
 	padding: 12px;
-	background-color: var(--proj-content-bg-color);
+	background-color: var(--section-content-bg-color);
 }
 
 /*=========\
