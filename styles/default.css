@@ -286,12 +286,15 @@ a:active {
 || SOCIAL MEDIA LINKS ||
 \=====================*/
 .sm-icon {
-	margin: 15px;
 	width: 50px;
 	fill: var(--main-text-color);
 }
 
-.social-media-container {
+.sm-container {
+	margin: 15px;
+}
+
+.all-sm-container {
 	display: inline-flex;
 }
 
