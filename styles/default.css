@@ -291,6 +291,10 @@ a:active {
 	fill: var(--main-text-color);
 }
 
+.social-media-container {
+	display: inline-flex;
+}
+
 /*=========\
 || IMAGES ||
 \=========*/
