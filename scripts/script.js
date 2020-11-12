@@ -170,9 +170,6 @@ function updateActivePage(el) {
 
 // Deal with some instances where active page tab doesn't update due to manual scrolling.
 function updateActivePageEdgeCase() {
-	if (!usingDefaultWheelBehavior)
-		return;
-
 	// If current page does not match up with active tab, update the tab to match the page.
 	if (isDoneScrolling && pages[activePageId].position != pageContainerEl.scrollTop) {
 		if (!(pageContainerEl.scrollTop in pageByPosition))
