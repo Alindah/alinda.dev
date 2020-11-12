@@ -47,10 +47,10 @@
 	--content-container-bg-color: rgba(53, 61, 66, 0.75);
 
 	 /*-----------------*\
-	/* PROJECT VARIABLES *\
+	/* SECTION VARIABLES *\
 	\*-------------------*/
-	--proj-header-color: rgba(20, 20, 20, 0.35);
-	--proj-content-bg-color: rgba(255, 255, 255, 0.15);
+	--section-header-color: rgba(20, 20, 20, 0.35);
+	--section-content-bg-color: rgba(255, 255, 255, 0.15);
 }
 
 /*==========\
@@ -285,7 +285,10 @@ a:active {
 
 }
 
-.proj-cat-header {
+/*===========\
+|| SECTIONS ||
+\===========*/
+.section-header {
 	color: var(--emphasis-text-color);
 	text-transform: uppercase;
 	font-family: "Oswald", "Fira Sans Extra Condensed", "Bebas Neue", monospace;
@@ -294,7 +297,7 @@ a:active {
 	padding: 4px 8px 4px 8px;
 }
 
-.proj-content {
+.section-content {
 	padding: 12px;
 	background-color: var(--proj-content-bg-color);
 }
