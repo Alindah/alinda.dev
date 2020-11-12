@@ -257,6 +257,14 @@ a:active {
 	color: var(--emphasis-dark-text-color);
 }
 
+.em-text::selection {
+	color: var(--emphasis-highlight-color);
+}
+
+.em-text-dark::selection {
+	color: var(--main-text-color);
+}
+
 /*====================\
 || CONTENT CONTAINER ||
 \====================*/
