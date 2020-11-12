@@ -273,14 +273,6 @@ a:selection {
 	box-shadow: 0 0px 48px 8px var(--info-container-bg-shadow) inset;
 }
 
-.proj-icon-link:hover svg {
-	fill: var(--emphasis-text-color);
-}
-
-.proj-icon-link:hover span {
-	color: var(--emphasis-text-color);
-}
-
 .proj-icon-text {
 	font-family: "Oswald", monospace;
 	text-transform: uppercase;
@@ -372,6 +364,14 @@ a:selection {
 
 .all-svg-container {
 	display: inline-flex;
+}
+
+.icon-highlight:hover svg {
+	fill: var(--emphasis-text-color);
+}
+
+.icon-highlight:hover span {
+	color: var(--emphasis-text-color);
 }
 
 /*==========\
