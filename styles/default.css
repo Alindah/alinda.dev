@@ -1,7 +1,7 @@
 /*=========\
 || IMPORT ||
 \=========*/
-@import url('https://fonts.googleapis.com/css?family=Muli|Oswald|Satisfy|Zhi+Mang+Xing&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Muli|Oswald|Satisfy|Zhi+Mang+Xing|Fira+Sans+Extra+Condensed:wght@500|Bebas+Neue&display=swap');
 
 /*============\
 || VARIABLES ||
@@ -21,6 +21,7 @@
 	--main-text-color: rgb(235, 235, 235);
 	--main-font: Muli, Arial, sans-serif;
 	--main-font-size: 18px;
+	--emphasis-text-color: rgb(9, 10, 10);
 
 	/* Background gradient color for general elements: primary to tertiary color. */
 	--gen-gradient: linear-gradient(rgb(59, 63, 74), rgb(4, 4, 4));
@@ -44,6 +45,12 @@
 
 	--content-container-size: calc(100% - var(--info-container-size));
 	--content-container-bg-color: rgba(53, 61, 66, 0.75);
+
+	 /*-----------------*\
+	/* PROJECT VARIABLES *\
+	\*-------------------*/
+	--proj-header-color: rgba(20, 20, 20, 0.35);
+	--proj-content-bg-color: rgba(255, 255, 255, 0.15);
 }
 
 /*==========\
@@ -72,6 +79,25 @@ html, body {
 ::selection {
 	color: var(--info-container-bg-color);
 	background-color: rgba(190, 210, 225, 0.35);
+}
+
+a:link {
+	color: rgba(134, 204, 230, 1);
+	transition: color 0.25s;
+}
+
+a:visited {
+	color: rgba(134, 204, 230, 1);
+}
+
+a:hover {
+	color: rgba(146, 250, 255, 1);
+	transition: color 0.1s;
+}
+
+a:active {
+	color: rgba(49, 109, 132, 1);
+	transition: color 0.1s;
 }
 
 /*=============\
@@ -255,13 +281,22 @@ html, body {
 	width: auto;
 }
 
-/*=====================\
-|| SOCIAL MEDIA LINKS ||
-\=====================*/
-.sm-icon {
-	margin: 15px;
-	width: 50px;
-	fill: var(--main-text-color);
+.proj-cat-container {
+
+}
+
+.proj-cat-header {
+	color: var(--emphasis-text-color);
+	text-transform: uppercase;
+	font-family: "Oswald", "Fira Sans Extra Condensed", "Bebas Neue", monospace;
+	font-size: calc(1.25 * var(--main-font-size));
+	background-color: var(--proj-header-color);
+	padding: 4px 8px 4px 8px;
+}
+
+.proj-content {
+	padding: 12px;
+	background-color: var(--proj-content-bg-color);
 }
 
 /*=========\
@@ -271,6 +306,19 @@ html, body {
 	border-radius: 50%;
 	width: 200px;
 	height: auto;
+}
+
+.svg-icon {
+	width: 50px;
+	fill: var(--main-text-color);
+}
+
+.svg-container {
+	margin: 15px;
+}
+
+.all-svg-container {
+	display: inline-flex;
 }
 
 /*==========\
