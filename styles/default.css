@@ -86,6 +86,10 @@ html, body {
 	background-color: rgba(190, 210, 225, 0.35);
 }
 
+a {
+	text-decoration: none;
+}
+
 a:link {
 	color: var(--emphasis-text-color);
 	transition: color 0.25s;
@@ -103,6 +107,31 @@ a:hover {
 a:active {
 	color: var(--emphasis-dull-color);
 	transition: color 0.1s;
+}
+
+a:selection {
+	color: var(--emphasis-highlight-color);
+}
+
+.small-text {
+	font-size: 12px;
+}
+
+.em-text {
+	color: var(--emphasis-text-color);
+	//text-transform: uppercase;
+}
+
+.em-text-dark {
+	color: var(--emphasis-dark-text-color);
+}
+
+.em-text::selection {
+	color: var(--emphasis-highlight-color);
+}
+
+.em-text-dark::selection {
+	color: var(--main-text-color);
 }
 
 /*=============\
@@ -244,24 +273,17 @@ a:active {
 	box-shadow: 0 0px 48px 8px var(--info-container-bg-shadow) inset;
 }
 
-.small-text {
-	font-size: 12px;
+.proj-icon-link:hover svg {
+	fill: var(--emphasis-text-color);
 }
 
-.em-text {
+.proj-icon-link:hover span {
 	color: var(--emphasis-text-color);
-	//text-transform: uppercase;
 }
 
-.em-text-dark {
-	color: var(--emphasis-dark-text-color);
-}
-
-.em-text::selection {
-	color: var(--emphasis-highlight-color);
-}
-
-.em-text-dark::selection {
+.proj-icon-text {
+	font-family: "Oswald", monospace;
+	text-transform: uppercase;
 	color: var(--main-text-color);
 }
 
