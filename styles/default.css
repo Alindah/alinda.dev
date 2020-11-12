@@ -285,11 +285,6 @@ a:active {
 /*=====================\
 || SOCIAL MEDIA LINKS ||
 \=====================*/
-.sm-icon {
-	width: 50px;
-	fill: var(--main-text-color);
-}
-
 .sm-container {
 	margin: 15px;
 }
@@ -305,6 +300,11 @@ a:active {
 	border-radius: 50%;
 	width: 200px;
 	height: auto;
+}
+
+.svg-icon {
+	width: 50px;
+	fill: var(--main-text-color);
 }
 
 /*==========\
