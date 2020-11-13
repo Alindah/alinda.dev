@@ -54,7 +54,7 @@
 	 /*-----------------*\
 	/* SECTION VARIABLES *\
 	\*-------------------*/
-	--section-header-color: rgba(20, 20, 20, 0.35);
+	--section-header-color: rgba(20, 20, 20, 0.25);
 	--section-content-bg-color: rgba(255, 255, 255, 0.15);
 }
 
@@ -209,6 +209,7 @@ a:selection {
 }
 
 .page {
+	min-height: 500px;
 	height: 100%;
 	margin: 0px;
 	padding: 0;
@@ -378,6 +379,10 @@ a:selection {
 || COMPACT ||
 \==========*/
 @media (max-width: 960px) {
+	html, body {
+		overflow: auto;
+	}
+
 	#page-container {
 		scroll-snap-type: none;
 	}
