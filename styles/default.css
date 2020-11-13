@@ -355,6 +355,11 @@ a:selection {
 
 }
 
+.tab-indicator {
+	float: right;
+	padding-right: 8px;
+}
+
 /*=========\
 || IMAGES ||
 \=========*/
