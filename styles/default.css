@@ -209,6 +209,7 @@ a:selection {
 }
 
 .page {
+	min-height: 500px;
 	height: 100%;
 	margin: 0px;
 	padding: 0;
