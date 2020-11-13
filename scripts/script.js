@@ -222,30 +222,43 @@ function mouseWheelToNextPage(e) {
 /*==================*\
 || COLLAPSIBLE TABS ||
 \*==================*/
-// Collapse all tabs besides clicked on category.
+// Collapse all tabs besides selected category.
+// Scroll to container if not already in view.
 function onClickProjShortcut(el) {
 	var projId = el.id.replace("-shortcut", "");
 
 	for (var key in collapsibleObj) {
 		if (key == projId)
-			expandTab(collapsibleObj[projId]);
+			expandTab(collapsibleObj[projId], projId);
 		else
-			collapseTab(collapsibleObj[key]);
+			collapseTab(collapsibleObj[key], key);
 	}
+
+	document.getElementById("content-proj").scrollIntoView();
 }
 
 // Expand or collapse a tab depending on its display status.
 function expandOrCollapseTab(el) {
 	if (collapsibleObj[el.id].style.display == "none")
-		expandTab(collapsibleObj[el.id]);
+		expandTab(collapsibleObj[el.id], el.id);
 	else
-		collapseTab(collapsibleObj[el.id]);
+		collapseTab(collapsibleObj[el.id], el.id);
 }
 
-function collapseTab(el) {
+function collapseTab(el, id) {
 	el.style.display = "none";
+	flipIndicator(id, true);
 }
 
-function expandTab(el) {
+function expandTab(el, id) {
 	el.style.display = "block";
+	flipIndicator(id, false);
+}
+
+function flipIndicator(id, isExpanded) {
+	var expandIn = document.getElementById(id).getElementsByClassName("indicator-expand")[0];
+	var collapseIn = document.getElementById(id).getElementsByClassName("indicator-collapse")[0];
+
+	expandIn.style.display = isExpanded ? "inline" : "none";
+	collapseIn.style.display = isExpanded ? "none" : "inline";
 }
