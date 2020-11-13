@@ -17,6 +17,9 @@ var mouseWheelListener;
 var usingDefaultWheelBehavior = false;
 var isDoneScrolling = true;
 
+// Collapsible Variables
+var collapsibleObj = {};
+
 // Custom Events
 let pageChangeEvent = new CustomEvent("changedPage", {detail: {}});
 
@@ -26,6 +29,7 @@ function initialize() {
 	populatePages();
 	setActivePage();
 	initializeEventListeners();
+	getProjectTabs();
 
 	// Some browsers stay in last position when refreshing the site. Scroll to Home if so.
 	if (pageContainerEl.scrollTop != 0)
@@ -86,6 +90,15 @@ function initializeEventListeners() {
 
 	// Listen for whenever the active page changes.
 	window.addEventListener("changedPage", function(e){updateActivePage(pageContainerEl);});
+}
+
+function getProjectTabs() {
+	var tabObj = document.getElementsByClassName("collapsible-tab");
+	var bodyObj = document.getElementsByClassName("collapsible-body");
+
+	// Associate each tab with its body by the tab element as the key and its body as its value.
+	for (var i = 0; i < tabObj.length; i++)
+		collapsibleObj[tabObj[i].id] = bodyObj[i];
 }
 
 function onKeyboardNav(event) {
@@ -204,4 +217,22 @@ function mouseWheelToNextPage(e) {
 	// Otherwise, scroll to next page.
 	isDoneScrolling = false;
 	scrollToPage(pageByIndex[nextPage]);
+}
+
+/*==================*\
+|| COLLAPSIBLE TABS ||
+\*==================*/
+function expandOrCollapseTab(el) {
+	if (collapsibleObj[el.id].style.display == "none")
+		expandTab(collapsibleObj[el.id]);
+	else
+		collapseTab(collapsibleObj[el.id]);
+}
+
+function collapseTab(el) {
+	el.style.display = "none";
+}
+
+function expandTab(el) {
+	el.style.display = "block";
 }

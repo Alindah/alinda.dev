@@ -345,6 +345,15 @@ a:selection {
 	background-color: var(--section-content-bg-color);
 }
 
+.collapsible-tab {
+	cursor: pointer;
+	margin-top: 4px;
+}
+
+.collapsible-body {
+
+}
+
 /*=========\
 || IMAGES ||
 \=========*/
