@@ -222,6 +222,19 @@ function mouseWheelToNextPage(e) {
 /*==================*\
 || COLLAPSIBLE TABS ||
 \*==================*/
+// Collapse all tabs besides clicked on category.
+function onClickProjShortcut(el) {
+	var projId = el.id.replace("-shortcut", "");
+
+	for (var key in collapsibleObj) {
+		if (key == projId)
+			expandTab(collapsibleObj[projId]);
+		else
+			collapseTab(collapsibleObj[key]);
+	}
+}
+
+// Expand or collapse a tab depending on its display status.
 function expandOrCollapseTab(el) {
 	if (collapsibleObj[el.id].style.display == "none")
 		expandTab(collapsibleObj[el.id]);
