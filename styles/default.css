@@ -416,5 +416,6 @@ a:selection {
 
 	.content-container {
 		width: 100%;
+		min-height: 100%;
 	}
 }
