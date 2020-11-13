@@ -88,6 +88,7 @@ html, body {
 
 a {
 	text-decoration: none;
+	cursor: pointer;
 }
 
 a:link {
@@ -343,6 +344,15 @@ a:selection {
 
 .section-color-light {
 	background-color: var(--section-content-bg-color);
+}
+
+.collapsible-tab {
+	cursor: pointer;
+	margin-top: 4px;
+}
+
+.collapsible-body {
+
 }
 
 /*=========\
