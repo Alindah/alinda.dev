@@ -222,7 +222,8 @@ function mouseWheelToNextPage(e) {
 /*==================*\
 || COLLAPSIBLE TABS ||
 \*==================*/
-// Collapse all tabs besides clicked on category.
+// Collapse all tabs besides selected category.
+// Scroll to container if not already in view.
 function onClickProjShortcut(el) {
 	var projId = el.id.replace("-shortcut", "");
 
@@ -232,6 +233,8 @@ function onClickProjShortcut(el) {
 		else
 			collapseTab(collapsibleObj[key], key);
 	}
+
+	document.getElementById("content-proj").scrollIntoView();
 }
 
 // Expand or collapse a tab depending on its display status.
