@@ -357,13 +357,34 @@ a:selection {
 	transition-timing-function: ease-out;
 }
 
-.collapsible-body {
-
-}
-
 .tab-indicator {
 	float: right;
 	padding-right: 8px;
+}
+
+.collapsible-body {
+	
+}
+
+.expanded {
+	overflow: auto;
+	height: 200px;
+	animation-name: expand-tab;
+	animation-duration: 0.5s;
+	animation-fill-mode: forwards;
+}
+
+.collapsed {
+	height: 0;
+	padding: 0;
+	display: none;
+}
+
+@keyframes expand-tab {
+	from {
+		height: 0;
+		padding: 0;
+	}
 }
 
 /*=========\
