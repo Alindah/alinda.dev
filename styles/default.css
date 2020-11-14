@@ -57,7 +57,7 @@
 	--section-header-color: rgba(20, 20, 20, 0.25);
 	--section-content-bg-color: rgba(255, 255, 255, 0.15);
 	--section-padding: 12px;
-	--tabs-max-height: 80vh;
+	--tabs-max-height: calc(200px + 25vh);
 }
 
 /*==========\
@@ -299,7 +299,7 @@ a:selection {
 
 .scrolling-content-container {
 	position: relative;
-	padding: 40px;
+	padding: 32px;
 	height: 80%;
 	overflow: scroll;
 
@@ -321,8 +321,8 @@ a:selection {
 	width: auto;
 }
 
-.proj-cat-container {
-
+#content-proj .scrolling-content-container {
+	padding: 20px 20px 60px 20px;
 }
 
 /*===========\
