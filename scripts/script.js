@@ -239,19 +239,21 @@ function onClickProjShortcut(el) {
 
 // Expand or collapse a tab depending on its display status.
 function expandOrCollapseTab(el) {
-	if (collapsibleObj[el.id].style.display == "none")
+	if (collapsibleObj[el.id].classList.contains("collapsed"))
 		expandTab(collapsibleObj[el.id], el.id);
 	else
 		collapseTab(collapsibleObj[el.id], el.id);
 }
 
 function collapseTab(el, id) {
-	el.style.display = "none";
+	el.classList.remove("expanded");
+	el.classList.add("collapsed");
 	flipIndicator(id, true);
 }
 
 function expandTab(el, id) {
-	el.style.display = "block";
+	el.classList.remove("collapsed");
+	el.classList.add("expanded");
 	flipIndicator(id, false);
 }
 
