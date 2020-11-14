@@ -56,6 +56,8 @@
 	\*-------------------*/
 	--section-header-color: rgba(20, 20, 20, 0.25);
 	--section-content-bg-color: rgba(255, 255, 255, 0.15);
+	--section-padding: 12px;
+	--tabs-max-height: 80vh;
 }
 
 /*==========\
@@ -335,7 +337,7 @@ a:selection {
 }
 
 .section-content {
-	padding: 12px;
+	padding: var(--section-padding);
 }
 
 .section-color-dark {
@@ -368,7 +370,7 @@ a:selection {
 
 .expanded {
 	overflow: auto;
-	height: 200px;
+	height: var(--tabs-max-height);
 	animation-name: expand-tab;
 	animation-duration: 0.5s;
 	animation-timing-function: ease-out;
@@ -391,8 +393,8 @@ a:selection {
 
 @keyframes collapse-tab {
 	from {
-		height: 200px;
-		padding: 12px;
+		height: var(--tabs-max-height);
+		padding: var(--section-padding);
 	}
 }
 
