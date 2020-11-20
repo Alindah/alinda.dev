@@ -202,7 +202,6 @@ a:selection {
 #page-container {
 	height: 100%;
 	scroll-behavior: smooth;
-	//overflow: hidden;
 	overflow: scroll;
 	scroll-snap-type: y mandatory;
 }
@@ -318,12 +317,17 @@ a:selection {
 }
 
 .image-slide {
-	margin: auto;
-	background: rgba(10, 20, 50, .5);
-	width: 80%;
-	padding: 10px;
-	text-align: center;
+	margin: 10px;
+	display: inline-flex;
 	align-items: center;
+	justify-content: center;
+	width: 80%;
+}
+
+.thumbnail-container {
+	display: inline-grid;
+	background-color: black;
+	width: 17.5%;
 }
 
 .art-focused {
@@ -332,16 +336,22 @@ a:selection {
 }
 
 .art-unfocused {
-	max-height: 50%;
-	max-width: 15%;
-	background-color: black;
+	width: 100%;
+	opacity: 50%;
+}
+
+.art-unfocused:hover {
+	opacity: 100%;
 }
 
 .spotlight {
 	margin: auto;
-	text-align: center;
-	background-color: black;
-	//width: 80%;
+	display: contents;
+
+}
+.spotlight-img {
+	max-width: 100%;
+	max-height: 400px;
 }
 
 /*===========\
@@ -384,8 +394,17 @@ a:selection {
 }
 
 .collapsible-body {
-	overflow: hidden;
+	overflow: scroll;
 	text-align: center;
+
+	/* Firefox, IE */
+	scrollbar-width: none;
+	-ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+.collapsible-body::-webkit-scrollbar {
+	/* Chrome, Safari, Edge */
+	display: none;
 }
 
 .expanded {

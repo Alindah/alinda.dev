@@ -78,18 +78,23 @@ function initializeEventListeners() {
 	window.addEventListener("keydown", function(e){onKeyboardNav(e)});
 	
 	// User should be allowed to scroll as normal while mousing over content container.
-	scrollableDiv = document.getElementsByClassName("scrolling-content-container");
-
-	for (var i = 0; i < scrollableDiv.length; i++) {
-		scrollableDiv[i].addEventListener("mouseenter", function(e){enableDefaultWheel(this);});
-		scrollableDiv[i].addEventListener("mouseleave", function(e){disableDefaultWheel()});
-	}
+	setScrollableElements("scrolling-content-container");
+	setScrollableElements("collapsible-body");
 
 	// Recalculate page positions after resizing window.
 	window.addEventListener("resize", function(e){makeCompactFriendly(); populatePages();});
 
 	// Listen for whenever the active page changes.
 	window.addEventListener("changedPage", function(e){updateActivePage(pageContainerEl);});
+}
+
+function setScrollableElements(className) {
+	scrollableDiv = document.getElementsByClassName(className);
+	
+	for (var i = 0; i < scrollableDiv.length; i++) {
+		scrollableDiv[i].addEventListener("mouseenter", function(e){enableDefaultWheel(this);});
+		scrollableDiv[i].addEventListener("mouseleave", function(e){disableDefaultWheel()});
+	}
 }
 
 function getProjectTabs() {
