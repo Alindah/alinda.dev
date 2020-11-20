@@ -57,7 +57,7 @@
 	--section-header-color: rgba(20, 20, 20, 0.25);
 	--section-content-bg-color: rgba(255, 255, 255, 0.15);
 	--section-padding: 12px;
-	--tabs-max-height: calc(200px + 25vh);
+	--tabs-max-height: calc(200px + 50vh);
 }
 
 /*==========\
