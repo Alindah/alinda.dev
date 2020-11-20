@@ -58,6 +58,13 @@
 	--section-content-bg-color: rgba(255, 255, 255, 0.15);
 	--section-padding: 12px;
 	--tabs-max-height: calc(200px + 50vh);
+
+	 /*-------------------*\
+	/* THUMBNAIL VARIABLES *\
+	\*---------------------*/
+	--thumbnail-default-size: 8vw;
+	--thumbnail-min-size: 80px;
+	--thumbnail-max-size: 150px;
 }
 
 /*==========\
@@ -328,12 +335,12 @@ a:selection {
 	overflow: hidden;
 	display: inline-grid;
 	background-color: black;
-	width: 8vw;
-	height: 8vw;
-	min-width: 80px;
-	min-height: 80px;
-	max-width: 150px;
-	max-height: 150px;
+	width: var(--thumbnail-default-size);
+	height: var(--thumbnail-default-size);
+	min-width: var(--thumbnail-min-size);
+	min-height: var(--thumbnail-min-size);
+	max-width: var(--thumbnail-max-size);
+	max-height: var(--thumbnail-max-size);
 }
 
 .thumbnail-img {
