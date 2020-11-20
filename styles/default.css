@@ -336,19 +336,19 @@ a:selection {
 	max-height: 150px;
 }
 
-.thumbnail-art {
+.thumbnail-img {
 	width: 100%;
 }
 
-.art-focused {
+.img-focused {
 	
 }
 
-.art-unfocused {
+.img-unfocused {
 	opacity: 50%;
 }
 
-.art-unfocused:hover {
+.img-unfocused:hover {
 	opacity: 100%;
 	cursor: pointer;
 }
