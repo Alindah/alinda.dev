@@ -314,11 +314,21 @@ a:selection {
 }
 
 .image-slide {
-	float: right;
-	min-height: 100%;
-	min-width: 100%;
-	height: auto;
-	width: auto;
+	margin: auto;
+	width: 80%;
+	padding: 10px;
+	text-align: center;
+	align-items: center;
+}
+
+.thumbnail-art {
+	max-height: 50%;
+	max-width: 12.5%;
+}
+
+.art-centerpiece {
+	max-height: 100%;
+	max-width: 25%;
 }
 
 #content-proj .scrolling-content-container {
@@ -366,11 +376,13 @@ a:selection {
 
 .collapsible-body {
 	overflow: hidden;
+
 }
 
 .expanded {
-	overflow: auto;
 	height: var(--tabs-max-height);
+	padding: var(--section-padding);
+	opacity: 100%;
 	animation-name: expand-tab;
 	animation-duration: 0.5s;
 	animation-timing-function: ease-out;
@@ -378,7 +390,7 @@ a:selection {
 
 .collapsed {
 	height: 0;
-	padding: 0;
+	opacity: 0;
 	animation-name: collapse-tab;
 	animation-duration: 0.35s;
 	animation-timing-function: ease-in-out;
@@ -387,14 +399,19 @@ a:selection {
 @keyframes expand-tab {
 	from {
 		height: 0;
-		padding: 0;
+		opacity: 0;
 	}
 }
 
 @keyframes collapse-tab {
-	from {
+	0% {
 		height: var(--tabs-max-height);
 		padding: var(--section-padding);
+		opacity: 100%;
+	}
+	100% {
+		padding: var(--section-padding);
+		opacity: 0%;
 	}
 }
 
