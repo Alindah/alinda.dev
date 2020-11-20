@@ -285,9 +285,15 @@ function onClickThumbnail(el) {
 	thumbnailGainFocus(thumbnail);
 
 	// Change the spotlight image to match the thumbnail.
-	var spotlight = document.getElementsByClassName("spotlight-img")[0];
+	var spotlight_active = document.getElementsByClassName("spotlight-img-active")[0];
+	var spotlight_hidden = document.getElementsByClassName("spotlight-img-hidden")[0];
 	var path = thumbnail.getAttribute("src");
-	spotlight.setAttribute("src", path);
+	
+	spotlight_hidden.setAttribute("src", path);
+
+	flipSpotlightVisibility(spotlight_hidden);
+	flipSpotlightVisibility(spotlight_active);
+	
 }
 
 function thumbnailGainFocus(el) {
@@ -298,4 +304,9 @@ function thumbnailGainFocus(el) {
 function thumbnailLoseFocus(el) {
 	el.classList.add("img-unfocused")
 	el.classList.remove("img-focused")
+}
+
+function flipSpotlightVisibility(el) {
+	el.classList.toggle("spotlight-img-hidden");
+	el.classList.toggle("spotlight-img-active");
 }
