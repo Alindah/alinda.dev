@@ -325,33 +325,44 @@ a:selection {
 }
 
 .thumbnail-container {
+	overflow: hidden;
 	display: inline-grid;
 	background-color: black;
-	width: 17.5%;
+	width: 8vw;
+	height: 8vw;
+	min-width: 80px;
+	min-height: 80px;
+	max-width: 150px;
+	max-height: 150px;
+}
+
+.thumbnail-art {
+	width: 100%;
 }
 
 .art-focused {
-	max-height: 100%;
-	max-width: 25%;
+	
 }
 
 .art-unfocused {
-	width: 100%;
 	opacity: 50%;
 }
 
 .art-unfocused:hover {
 	opacity: 100%;
+	cursor: pointer;
 }
 
 .spotlight {
 	margin: auto;
 	display: contents;
-
+	width: 80%;
 }
+
 .spotlight-img {
-	max-width: 100%;
-	max-height: 400px;
+	max-width: 95%;
+	height: 50vh;
+	min-height: 250px;
 }
 
 /*===========\
