@@ -313,26 +313,35 @@ a:selection {
 	display: none;
 }
 
+#content-proj .scrolling-content-container {
+	padding: 20px 20px 60px 20px;
+}
+
 .image-slide {
 	margin: auto;
+	background: rgba(10, 20, 50, .5);
 	width: 80%;
 	padding: 10px;
 	text-align: center;
 	align-items: center;
 }
 
-.thumbnail-art {
-	max-height: 50%;
-	max-width: 12.5%;
-}
-
-.art-centerpiece {
+.art-focused {
 	max-height: 100%;
 	max-width: 25%;
 }
 
-#content-proj .scrolling-content-container {
-	padding: 20px 20px 60px 20px;
+.art-unfocused {
+	max-height: 50%;
+	max-width: 15%;
+	background-color: black;
+}
+
+.spotlight {
+	margin: auto;
+	text-align: center;
+	background-color: black;
+	//width: 80%;
 }
 
 /*===========\
@@ -376,7 +385,7 @@ a:selection {
 
 .collapsible-body {
 	overflow: hidden;
-
+	text-align: center;
 }
 
 .expanded {
