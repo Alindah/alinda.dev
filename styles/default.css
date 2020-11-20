@@ -57,7 +57,14 @@
 	--section-header-color: rgba(20, 20, 20, 0.25);
 	--section-content-bg-color: rgba(255, 255, 255, 0.15);
 	--section-padding: 12px;
-	--tabs-max-height: calc(200px + 25vh);
+	--tabs-max-height: calc(200px + 50vh);
+
+	 /*-------------------*\
+	/* THUMBNAIL VARIABLES *\
+	\*---------------------*/
+	--thumbnail-default-size: 8vw;
+	--thumbnail-min-size: 80px;
+	--thumbnail-max-size: 150px;
 }
 
 /*==========\
@@ -202,7 +209,6 @@ a:selection {
 #page-container {
 	height: 100%;
 	scroll-behavior: smooth;
-	//overflow: hidden;
 	overflow: scroll;
 	scroll-snap-type: y mandatory;
 }
@@ -313,16 +319,61 @@ a:selection {
 	display: none;
 }
 
-.image-slide {
-	float: right;
-	min-height: 100%;
-	min-width: 100%;
-	height: auto;
-	width: auto;
-}
-
 #content-proj .scrolling-content-container {
 	padding: 20px 20px 60px 20px;
+}
+
+.image-slide {
+	margin: 10px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 80%;
+}
+
+.thumbnail-container {
+	overflow: hidden;
+	display: inline-grid;
+	background-color: black;
+	width: var(--thumbnail-default-size);
+	height: var(--thumbnail-default-size);
+	min-width: var(--thumbnail-min-size);
+	min-height: var(--thumbnail-min-size);
+	max-width: var(--thumbnail-max-size);
+	max-height: var(--thumbnail-max-size);
+}
+
+.thumbnail-img {
+	width: 100%;
+}
+
+.img-focused {
+	
+}
+
+.img-unfocused {
+	opacity: 50%;
+	transition: opacity 0.25s;
+	filter: blur(1px);
+}
+
+.img-unfocused:hover {
+	opacity: 100%;
+	cursor: pointer;
+	transition: opacity 0.25s;
+	filter: blur(0px);
+}
+
+.spotlight {
+	margin: auto;
+	display: contents;
+	width: 80%;
+}
+
+.spotlight-img {
+	max-width: 95%;
+	height: 50vh;
+	min-height: 250px;
 }
 
 /*===========\
@@ -365,12 +416,23 @@ a:selection {
 }
 
 .collapsible-body {
-	overflow: hidden;
+	overflow: scroll;
+	text-align: center;
+
+	/* Firefox, IE */
+	scrollbar-width: none;
+	-ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+.collapsible-body::-webkit-scrollbar {
+	/* Chrome, Safari, Edge */
+	display: none;
 }
 
 .expanded {
-	overflow: auto;
 	height: var(--tabs-max-height);
+	padding: var(--section-padding);
+	opacity: 100%;
 	animation-name: expand-tab;
 	animation-duration: 0.5s;
 	animation-timing-function: ease-out;
@@ -378,7 +440,7 @@ a:selection {
 
 .collapsed {
 	height: 0;
-	padding: 0;
+	opacity: 0;
 	animation-name: collapse-tab;
 	animation-duration: 0.35s;
 	animation-timing-function: ease-in-out;
@@ -387,14 +449,19 @@ a:selection {
 @keyframes expand-tab {
 	from {
 		height: 0;
-		padding: 0;
+		opacity: 0;
 	}
 }
 
 @keyframes collapse-tab {
-	from {
+	0% {
 		height: var(--tabs-max-height);
 		padding: var(--section-padding);
+		opacity: 100%;
+	}
+	100% {
+		padding: var(--section-padding);
+		opacity: 0%;
 	}
 }
 

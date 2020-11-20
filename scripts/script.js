@@ -78,18 +78,23 @@ function initializeEventListeners() {
 	window.addEventListener("keydown", function(e){onKeyboardNav(e)});
 	
 	// User should be allowed to scroll as normal while mousing over content container.
-	scrollableDiv = document.getElementsByClassName("scrolling-content-container");
-
-	for (var i = 0; i < scrollableDiv.length; i++) {
-		scrollableDiv[i].addEventListener("mouseenter", function(e){enableDefaultWheel(this);});
-		scrollableDiv[i].addEventListener("mouseleave", function(e){disableDefaultWheel()});
-	}
+	setScrollableElements("scrolling-content-container");
+	setScrollableElements("collapsible-body");
 
 	// Recalculate page positions after resizing window.
 	window.addEventListener("resize", function(e){makeCompactFriendly(); populatePages();});
 
 	// Listen for whenever the active page changes.
 	window.addEventListener("changedPage", function(e){updateActivePage(pageContainerEl);});
+}
+
+function setScrollableElements(className) {
+	scrollableDiv = document.getElementsByClassName(className);
+	
+	for (var i = 0; i < scrollableDiv.length; i++) {
+		scrollableDiv[i].addEventListener("mouseenter", function(e){enableDefaultWheel(this);});
+		scrollableDiv[i].addEventListener("mouseleave", function(e){disableDefaultWheel()});
+	}
 }
 
 function getProjectTabs() {
@@ -263,4 +268,34 @@ function flipIndicator(id, isExpanded) {
 
 	expandIn.style.display = isExpanded ? "inline" : "none";
 	collapseIn.style.display = isExpanded ? "none" : "inline";
+}
+
+/*==================*\
+|| PROJECT EXPLORER ||
+\*==================*/
+function onClickThumbnail(el) {
+	var thumbnail = el.getElementsByClassName("thumbnail-img")[0];
+	
+	// If image is already focused, do nothing.
+	if (thumbnail.classList.contains("img-focused"))
+		return;
+
+	// Otherwise, make it focused and make the currently focused image lose focus.
+	thumbnailLoseFocus(document.getElementsByClassName("img-focused")[0]);
+	thumbnailGainFocus(thumbnail);
+
+	// Change the spotlight image to match the thumbnail.
+	var spotlight = document.getElementsByClassName("spotlight-img")[0];
+	var path = thumbnail.getAttribute("src");
+	spotlight.setAttribute("src", path);
+}
+
+function thumbnailGainFocus(el) {
+	el.classList.remove("img-unfocused")
+	el.classList.add("img-focused")
+}
+
+function thumbnailLoseFocus(el) {
+	el.classList.add("img-unfocused")
+	el.classList.remove("img-focused")
 }
