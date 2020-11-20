@@ -353,11 +353,15 @@ a:selection {
 
 .img-unfocused {
 	opacity: 50%;
+	transition: opacity 0.25s;
+	filter: blur(1px);
 }
 
 .img-unfocused:hover {
 	opacity: 100%;
 	cursor: pointer;
+	transition: opacity 0.25s;
+	filter: blur(0px);
 }
 
 .spotlight {
