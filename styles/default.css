@@ -376,6 +376,16 @@ a:selection {
 	min-height: 250px;
 }
 
+.spotlight-img-active {
+	opacity: 100%;
+	transition: opacity 0.5s;
+}
+
+.spotlight-img-hidden {
+	position: fixed;
+	opacity: 0%;
+}
+
 /*===========\
 || SECTIONS ||
 \===========*/
