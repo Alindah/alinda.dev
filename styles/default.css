@@ -326,9 +326,9 @@ a:selection {
 .image-slide {
 	margin: 10px;
 	display: inline-flex;
+	flex-wrap: wrap;
 	align-items: center;
 	justify-content: center;
-	width: 80%;
 }
 
 .thumbnail-container {
