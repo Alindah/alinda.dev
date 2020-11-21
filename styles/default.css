@@ -372,8 +372,6 @@ a:selection {
 
 .spotlight-img {
 	max-width: 95%;
-	height: 50vh;
-	min-height: 250px;
 }
 
 .spotlight-img-active {
