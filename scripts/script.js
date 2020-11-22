@@ -36,12 +36,18 @@ function initialize() {
 		scrollToPage("home");
 }
 
+// Returns true if visitor is using a device that is not compatible with site.
+// Ex. If using Mac, user is more likely to use Safari or is using a laptop.
+function isJankyDevice() {
+	return navigator.platform == "MacIntel";
+}
+
 function isCompact() {
 	return window.innerWidth <= compactSize;
 }
 
-function makeCompactFriendly() {
-	if (isCompact())
+function makeDeviceFriendly() {
+	if (isCompact() || isJankyDevice())
 		enableDefaultWheel();
 	else
 		disableDefaultWheel();
@@ -82,7 +88,7 @@ function initializeEventListeners() {
 	setScrollableElements("collapsible-body");
 
 	// Recalculate page positions after resizing window.
-	window.addEventListener("resize", function(e){makeCompactFriendly(); populatePages();});
+	window.addEventListener("resize", function(e){makeDeviceFriendly(); populatePages();});
 
 	// Listen for whenever the active page changes.
 	window.addEventListener("changedPage", function(e){updateActivePage(pageContainerEl);});
@@ -143,7 +149,7 @@ function enableDefaultWheel(el = null) {
 }
 
 function disableDefaultWheel() {
-	if (isCompact())
+	if (isCompact() || isJankyDevice())
 		return;
 	
 	window.addEventListener("wheel", mouseWheelListener, {passive: false});
