@@ -394,6 +394,7 @@ a:selection {
 || SECTIONS ||
 \===========*/
 .section-header {
+	display: flow-root;
 	color: var(--emphasis-dark-text-color);
 	text-transform: uppercase;
 	font-family: "Oswald", "Fira Sans Extra Condensed", "Bebas Neue", monospace;
