@@ -81,6 +81,7 @@ body {
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-blend-mode: overlay;
+	-webkit-overflow-scrolling: auto;
 }
 
 html, body {
@@ -531,4 +532,10 @@ a:selection {
 		width: 100%;
 		min-height: 100%;
 	}
+}
+
+/*=========\
+|| LAPTOP ||
+\=========*/
+@media (hover: hover) and (pointer: fine) {
 }
