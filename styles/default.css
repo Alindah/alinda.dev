@@ -151,8 +151,8 @@ a:selection {
 /* Entire navigation bar. */
 .navigation-container {
 	display: inline-block;
-	position: sticky;
-	bottom: 0px;
+	position: absolute;
+	bottom: 0;
 	width: 100%;
 	background: var(--gen-gradient);
 	text-align: center;
