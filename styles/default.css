@@ -81,7 +81,7 @@ body {
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-blend-mode: overlay;
-	-webkit-overflow-scrolling: auto;
+	//-webkit-overflow-scrolling: auto;
 }
 
 html, body {
