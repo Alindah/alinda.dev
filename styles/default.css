@@ -50,6 +50,7 @@
 
 	--content-container-size: calc(100% - var(--info-container-size));
 	--content-container-bg-color: rgba(53, 61, 66, 0.75);
+	--content-container-padding: 32px;
 
 	 /*-----------------*\
 	/* SECTION VARIABLES *\
@@ -294,7 +295,6 @@ a:selection {
 || CONTENT CONTAINER ||
 \====================*/
 .content-container {
-	//content: url("../images/christmas-tanaren.png");
 	display: inline-block;
 	float: right;
 	margin: 0;
@@ -306,8 +306,9 @@ a:selection {
 
 .scrolling-content-container {
 	position: relative;
-	padding: 32px;
-	height: 80%;
+	height: 100%;
+	padding: var(--content-container-padding);
+	box-sizing: border-box;
 	overflow: scroll;
 
 	/* Firefox, IE */
@@ -322,6 +323,10 @@ a:selection {
 
 #content-proj .scrolling-content-container {
 	padding: 20px 20px 60px 20px;
+}
+
+.padding-div {
+	padding-bottom: calc(2 * var(--content-container-padding));
 }
 
 .image-slide {
