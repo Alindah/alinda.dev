@@ -484,6 +484,9 @@ a:selection {
 	height: 32px;
 }
 
+/*=====================\
+|| PROJECT THUMBNAILS ||
+\=====================*/
 .image-slide {
 	margin: 10px;
 	display: inline-flex;
@@ -492,9 +495,6 @@ a:selection {
 	justify-content: center;
 }
 
-/*=====================\
-|| PROJECT THUMBNAILS ||
-\=====================*/
 .thumbnail-container {
 	overflow: hidden;
 	display: inline-grid;
