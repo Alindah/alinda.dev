@@ -69,6 +69,12 @@
 	--thumbnail-default-size: 8vw;
 	--thumbnail-min-size: 80px;
 	--thumbnail-max-size: 150px;
+
+	 /*--------------*\
+	/* GRID VARIABLES *\
+	\*----------------*/
+	--grid-color: rgb(46 50 53 / 0.5);
+	--grid-header-color: rgba(148, 176, 188, 0.75);
 }
 
 /*==========\
@@ -429,10 +435,12 @@ a:selection {
 	grid-area: header;
 	display: flow-root;
 	text-transform: uppercase;
+	background-color: var(--grid-header-color);
 }
 
 .grid-proj-desc {
 	grid-area: desc;
+	background-color: var(--grid-color);
 }
 
 .grid-proj-side {
@@ -440,10 +448,12 @@ a:selection {
 	overflow: auto;
 	word-wrap: break-word;
 	min-width: 100px;
+	background-color: var(--grid-color);
 }
 
 .grid-proj-img {
 	grid-area: img;
+	background-color: var(--grid-color);
 }
 
 .grid-container {
@@ -461,7 +471,6 @@ a:selection {
 }
 
 .grid-container > div {
-	background-color: rgb(46 50 53 / 0.5);
 	padding: var(--section-padding);
 	width: auto;
 }
@@ -474,7 +483,7 @@ a:selection {
 	color: var(--emphasis-dark-text-color);
 }
 
-.grid-svg-container {
+.grid-header-obj-container {
 	float: right;
 	padding-right: 4px;
 }
@@ -483,6 +492,16 @@ a:selection {
 	width: 32px;
 	height: 32px;
 }
+
+.grid-audio-player {
+	max-height: 32px;
+}
+
+/* https://stackoverflow.com/questions/4126708/is-it-possible-to-style-html5-audio-tag */
+/*
+audio::-webkit-media-controls-panel {
+	background-color: rgba(31, 33, 35, 0.9);
+}*/
 
 /*=====================\
 || PROJECT THUMBNAILS ||
