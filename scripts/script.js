@@ -138,10 +138,12 @@ function onKeyboardNav(event) {
 }
 
 function enableDefaultWheel(el = null) {
+	/* Removed this feature due to glitchiness.
 	// If this div is small enough to fit on the screen without scrolling,
 	// then keep snapping to next page as normal when scrolling.
 	if (el && el.scrollHeight == el.offsetHeight)
 		return;
+	*/
 
 	// Otherwise, allow user to scroll through content without snapping to next page.
 	window.removeEventListener("wheel", mouseWheelListener);

@@ -30,6 +30,9 @@
 
 	/* Background gradient color for general elements: primary to tertiary color. */
 	--gen-gradient: linear-gradient(rgb(59, 63, 74), rgb(4, 4, 4));
+
+	/* Font used for headers and titles. */
+	--header-font: "Oswald", "Fira Sans Extra Condensed", "Bebas Neue", monospace;
 	
 	 /*------------------------*\
 	/* NAVIGATION BAR VARIABLES *\
@@ -66,6 +69,12 @@
 	--thumbnail-default-size: 8vw;
 	--thumbnail-min-size: 80px;
 	--thumbnail-max-size: 150px;
+
+	 /*--------------*\
+	/* GRID VARIABLES *\
+	\*----------------*/
+	--grid-color: rgb(46 50 53 / 0.5);
+	--grid-header-color: rgba(148, 176, 188, 0.75);
 }
 
 /*==========\
@@ -286,7 +295,7 @@ a:selection {
 }
 
 .proj-icon-text {
-	font-family: "Oswald", monospace;
+	font-family: var(--header-font);
 	text-transform: uppercase;
 	color: var(--main-text-color);
 }
@@ -329,67 +338,6 @@ a:selection {
 	padding-bottom: calc(2 * var(--content-container-padding));
 }
 
-.image-slide {
-	margin: 10px;
-	display: inline-flex;
-	flex-wrap: wrap;
-	align-items: center;
-	justify-content: center;
-}
-
-.thumbnail-container {
-	overflow: hidden;
-	display: inline-grid;
-	background-color: black;
-	width: var(--thumbnail-default-size);
-	height: var(--thumbnail-default-size);
-	min-width: var(--thumbnail-min-size);
-	min-height: var(--thumbnail-min-size);
-	max-width: var(--thumbnail-max-size);
-	max-height: var(--thumbnail-max-size);
-}
-
-.thumbnail-img {
-	width: 100%;
-}
-
-.img-focused {
-	
-}
-
-.img-unfocused {
-	opacity: 50%;
-	transition: opacity 0.25s;
-	filter: blur(1px);
-}
-
-.img-unfocused:hover {
-	opacity: 100%;
-	cursor: pointer;
-	transition: opacity 0.25s;
-	filter: blur(0px);
-}
-
-.spotlight {
-	margin: auto;
-	display: contents;
-	width: 80%;
-}
-
-.spotlight-img {
-	max-width: 95%;
-}
-
-.spotlight-img-active {
-	opacity: 100%;
-	transition: opacity 0.5s;
-}
-
-.spotlight-img-hidden {
-	position: fixed;
-	opacity: 0%;
-}
-
 /*===========\
 || SECTIONS ||
 \===========*/
@@ -397,7 +345,7 @@ a:selection {
 	display: flow-root;
 	color: var(--emphasis-dark-text-color);
 	text-transform: uppercase;
-	font-family: "Oswald", "Fira Sans Extra Condensed", "Bebas Neue", monospace;
+	font-family: var(--header-font);
 	font-size: calc(1.25 * var(--main-font-size));
 	padding: 4px 8px 4px 8px;
 }
@@ -478,6 +426,145 @@ a:selection {
 		padding: var(--section-padding);
 		opacity: 0%;
 	}
+}
+
+/*===============\
+|| PROJECT GRID ||
+\===============*/
+.grid-proj-title {
+	grid-area: header;
+	display: flow-root;
+	text-transform: uppercase;
+	background-color: var(--grid-header-color);
+}
+
+.grid-proj-desc {
+	grid-area: desc;
+	background-color: var(--grid-color);
+}
+
+.grid-proj-side {
+	grid-area: side;
+	overflow: auto;
+	word-wrap: break-word;
+	min-width: 100px;
+	background-color: var(--grid-color);
+}
+
+.grid-proj-img {
+	grid-area: img;
+	background-color: var(--grid-color);
+}
+
+.grid-container {
+	display: grid;
+	grid-template-columns: 70%;
+	grid-template-areas:
+	'header header header'
+	'desc desc side'
+	'img img img';
+	grid-gap: 2px;
+	padding: 2px;
+	margin: var(--section-padding);
+	text-align: left;
+	width: auto;
+}
+
+.grid-container > div {
+	padding: var(--section-padding);
+	width: auto;
+}
+
+.grid-section-title {
+	display: inline-block;
+	padding-bottom: 4px;
+	font-family: var(--header-font);
+	font-size: calc(var(--main-font-size) * 1.25);
+	color: var(--emphasis-dark-text-color);
+}
+
+.grid-header-obj-container {
+	float: right;
+	padding-right: 4px;
+}
+
+.grid-svg-icon {
+	width: 32px;
+	height: 32px;
+}
+
+.grid-audio-player {
+	max-height: 32px;
+}
+
+/* https://stackoverflow.com/questions/4126708/is-it-possible-to-style-html5-audio-tag */
+/*
+audio::-webkit-media-controls-panel {
+	background-color: rgba(31, 33, 35, 0.9);
+}*/
+
+/*=====================\
+|| PROJECT THUMBNAILS ||
+\=====================*/
+.image-slide {
+	margin: 10px;
+	display: inline-flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+}
+
+.thumbnail-container {
+	overflow: hidden;
+	display: inline-grid;
+	background-color: black;
+	width: var(--thumbnail-default-size);
+	height: var(--thumbnail-default-size);
+	min-width: var(--thumbnail-min-size);
+	min-height: var(--thumbnail-min-size);
+	max-width: var(--thumbnail-max-size);
+	max-height: var(--thumbnail-max-size);
+}
+
+.thumbnail-img {
+	width: 100%;
+}
+
+.img-focused {
+	
+}
+
+.img-unfocused {
+	opacity: 50%;
+	transition: opacity 0.25s;
+	filter: blur(1px);
+}
+
+.img-unfocused:hover {
+	opacity: 100%;
+	cursor: pointer;
+	transition: opacity 0.25s;
+	filter: blur(0px);
+}
+
+.spotlight {
+	margin: auto;
+	display: contents;
+	width: 80%;
+}
+
+.spotlight-img {
+	max-width: 95%;
+}
+
+.spotlight-img-active {
+	opacity: 100%;
+	transition: opacity 0.5s;
+}
+
+.spotlight-img-hidden {
+	position: fixed;
+	opacity: 0%;
 }
 
 /*=========\
