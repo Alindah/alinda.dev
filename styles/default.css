@@ -447,7 +447,7 @@ a:selection {
 	grid-area: side;
 	overflow: auto;
 	word-wrap: break-word;
-	min-width: 100px;
+	min-width: 120px;
 	background-color: var(--grid-color);
 }
 
@@ -464,15 +464,12 @@ a:selection {
 	'desc desc side'
 	'img img img';
 	grid-gap: 2px;
-	padding: 2px;
 	margin: var(--section-padding);
 	text-align: left;
-	width: auto;
 }
 
 .grid-container > div {
 	padding: var(--section-padding);
-	width: auto;
 }
 
 .grid-section-title {
@@ -624,6 +621,31 @@ audio::-webkit-media-controls-panel {
 	.content-container {
 		width: 100%;
 		min-height: 100%;
+	}
+
+	.grid-container {
+		grid-template-columns: inherit;
+		grid-template-areas:
+		'header header header'
+		'side side side'
+		'desc desc desc'
+		'img img img';
+	}
+
+	.grid-audio-player {
+		max-width: 300px;
+		width: 50vw;
+	}
+}
+
+@media (max-width: 500px) {
+	.grid-container {
+		margin: 0;
+		margin-bottom: var(--section-padding);
+	}
+
+	.audio-player-container {
+		float: inherit;
 	}
 }
 
