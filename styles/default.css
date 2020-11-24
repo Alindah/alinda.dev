@@ -428,8 +428,6 @@ a:selection {
 .grid-proj-title {
 	grid-area: header;
 	display: flow-root;
-
-	background-color: rgba(53, 58, 62, 1);
 	text-transform: uppercase;
 }
 
