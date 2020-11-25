@@ -322,6 +322,7 @@ function flipSpotlightVisibility(el) {
 /*=======*\
 || AUDIO ||
 \*=======*/
+// Hide anything that is showing and display anything that was hidden.
 function flipAudioStatus(el) {
 	var hidden = el.getElementsByClassName("hidden")[0];
 	var showing = el.getElementsByClassName("showing")[0];
@@ -332,10 +333,22 @@ function flipAudioStatus(el) {
 	showing.classList.add("hidden");
 }
 
-function playAudio(audioId) {
-	var proj = document.getElementById(audioId.replace("audio", "proj-music"));
-	var audio = document.getElementById(audioId);
-	
+// Play audio and display the pause button.
+// Stop playing any audio that is currently playing.
+function playAudio(id) {
+	var allPlayers = document.getElementsByClassName("grid-audio-player");
+	var proj = document.getElementById(id.replace("audio", "proj-music"));
+	var audio = document.getElementById(id);
+
+	// Stop playing other audio if any.
+	for (var i = 0; i < allPlayers.length; i++) {
+		if (allPlayers[i] == id)
+			continue;
+
+		if (!allPlayers[i].paused)
+			pauseAudio(allPlayers[i].id);
+	}
+
 	// Reload so it starts from beginning upon pressing on play again.	
 	audio.load();
 	audio.play();
@@ -343,8 +356,16 @@ function playAudio(audioId) {
 	flipAudioStatus(proj);
 }
 
-function pauseAudio(audioId) {
-	var proj = document.getElementById(audioId.replace("audio", "proj-music"));
-	document.getElementById(audioId).pause();
+// Stop audio and display the play button.
+function pauseAudio(id) {
+	var proj = document.getElementById(id.replace("audio", "proj-music"));
+	document.getElementById(id).pause();
 	flipAudioStatus(proj);
+}
+
+// Displays and updates audio track time.
+// https://stackoverflow.com/questions/4993097/html5-display-audio-currenttime
+function updateAudioTimeTracker(audioEl, id) {
+	var proj = document.getElementById(id);
+	proj.getElementsByClassName('audio-time-tracker')[0].innerHTML = Math.floor(audioEl.currentTime) + ' / ' + Math.floor(audioEl.duration);
 }
