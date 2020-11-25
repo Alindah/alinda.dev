@@ -17,7 +17,7 @@ var mouseWheelListener;
 var usingDefaultWheelBehavior = false;
 var isDoneScrolling = true;
 
-// Collapsible Variables
+// Collections Variables
 var collapsibleObj = {};
 
 // Custom Events
@@ -317,4 +317,55 @@ function thumbnailLoseFocus(el) {
 function flipSpotlightVisibility(el) {
 	el.classList.toggle("spotlight-img-hidden");
 	el.classList.toggle("spotlight-img-active");
+}
+
+/*=======*\
+|| AUDIO ||
+\*=======*/
+// Hide anything that is showing and display anything that was hidden.
+function flipAudioStatus(el) {
+	var hidden = el.getElementsByClassName("hidden")[0];
+	var showing = el.getElementsByClassName("showing")[0];
+
+	hidden.classList.remove("hidden");
+	hidden.classList.add("showing");
+	showing.classList.remove("showing");
+	showing.classList.add("hidden");
+}
+
+// Play audio and display the pause button.
+// Stop playing any audio that is currently playing.
+function playAudio(id) {
+	var allPlayers = document.getElementsByClassName("grid-audio-player");
+	var proj = document.getElementById(id.replace("audio", "proj-music"));
+	var audio = document.getElementById(id);
+
+	// Stop playing other audio if any.
+	for (var i = 0; i < allPlayers.length; i++) {
+		if (allPlayers[i] == id)
+			continue;
+
+		if (!allPlayers[i].paused)
+			pauseAudio(allPlayers[i].id);
+	}
+
+	// Reload so it starts from beginning upon pressing on play again.	
+	audio.load();
+	audio.play();
+
+	flipAudioStatus(proj);
+}
+
+// Stop audio and display the play button.
+function pauseAudio(id) {
+	var proj = document.getElementById(id.replace("audio", "proj-music"));
+	document.getElementById(id).pause();
+	flipAudioStatus(proj);
+}
+
+// Displays and updates audio track time.
+// https://stackoverflow.com/questions/4993097/html5-display-audio-currenttime
+function updateAudioTimeTracker(audioEl, id) {
+	var proj = document.getElementById(id);
+	proj.getElementsByClassName('audio-time-tracker')[0].innerHTML = Math.floor(audioEl.currentTime) + ' / ' + Math.floor(audioEl.duration);
 }
