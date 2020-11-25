@@ -334,7 +334,12 @@ function flipAudioStatus(el) {
 
 function playAudio(audioId) {
 	var proj = document.getElementById(audioId.replace("audio", "proj-music"));
-	document.getElementById(audioId).play();
+	var audio = document.getElementById(audioId);
+	
+	// Reload so it starts from beginning upon pressing on play again.	
+	audio.load();
+	audio.play();
+
 	flipAudioStatus(proj);
 }
 
