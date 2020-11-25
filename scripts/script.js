@@ -17,7 +17,7 @@ var mouseWheelListener;
 var usingDefaultWheelBehavior = false;
 var isDoneScrolling = true;
 
-// Collapsible Variables
+// Collections Variables
 var collapsibleObj = {};
 
 // Custom Events
@@ -317,4 +317,29 @@ function thumbnailLoseFocus(el) {
 function flipSpotlightVisibility(el) {
 	el.classList.toggle("spotlight-img-hidden");
 	el.classList.toggle("spotlight-img-active");
+}
+
+/*=======*\
+|| AUDIO ||
+\*=======*/
+function flipAudioStatus(el) {
+	var hidden = el.getElementsByClassName("hidden")[0];
+	var showing = el.getElementsByClassName("showing")[0];
+
+	hidden.classList.remove("hidden");
+	hidden.classList.add("showing");
+	showing.classList.remove("showing");
+	showing.classList.add("hidden");
+}
+
+function playAudio(audioId) {
+	var proj = document.getElementById(audioId.replace("audio", "proj-music"));
+	document.getElementById(audioId).play();
+	flipAudioStatus(proj);
+}
+
+function pauseAudio(audioId) {
+	var proj = document.getElementById(audioId.replace("audio", "proj-music"));
+	document.getElementById(audioId).pause();
+	flipAudioStatus(proj);
 }
