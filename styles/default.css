@@ -478,15 +478,26 @@ a:selection {
 .grid-container {
 	display: grid;
 	grid-template-columns: 70%;
+	grid-gap: 2px;
+	text-align: left;
+	margin: var(--section-padding);
+	transition: margin 0.5s;
+}
+
+.gc-v1 {
+	grid-template-areas:
+	'header header header'
+	'desc desc sidetop'
+	'desc desc sidetop'
+	'img img img';
+}
+
+.gc-v2 {
 	grid-template-areas:
 	'header header header'
 	'desc desc sidetop'
 	'desc desc sidebot'
 	'img img img';
-	grid-gap: 2px;
-	text-align: left;
-	margin: var(--section-padding);
-	transition: margin 0.5s;
 }
 
 .grid-container > div {
@@ -645,7 +656,16 @@ audio::-webkit-media-controls-panel {
 		min-height: 100%;
 	}
 
-	.grid-container {
+	.gc-v1 {
+		grid-template-columns: inherit;
+		grid-template-areas:
+		'header header'
+		'sidetop sidetop'
+		'desc desc'
+		'img img';
+	}
+
+	.gc-v2 {
 		grid-template-columns: inherit;
 		grid-template-areas:
 		'header header'
