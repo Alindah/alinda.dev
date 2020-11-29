@@ -614,7 +614,7 @@ audio::-webkit-media-controls-panel {
 #polaroid-desc {
 	margin-top: calc(var(--portrait-size) * .05);
 	margin-bottom: calc(var(--portrait-size) * .05);
-	font-family: "Caveat", Arial;
+	font-family: "Caveat", Arial, sans-serif;
 	font-size: calc(var(--main-font-size) * 1.25);
 }
 
