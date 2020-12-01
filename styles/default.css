@@ -306,8 +306,16 @@ a:selection {
 }
 
 #home-container {
+	position: relative;
 	background-color: transparent;
 	box-shadow: 0 0px 48px 8px var(--info-container-bg-shadow) inset;
+}
+
+.home-caption-container {
+	position: absolute;
+	width: 50%;
+	bottom: 10%;
+	left: 25%;
 }
 
 .proj-icon-text {
@@ -477,6 +485,7 @@ a:selection {
 
 .grid-proj-img {
 	grid-area: img;
+	text-align: center;
 	background-color: var(--grid-color);
 }
 
@@ -560,6 +569,10 @@ audio::-webkit-media-controls-panel {
 	max-height: var(--thumbnail-max-size);
 }
 
+.thumbnail-container-const {
+	background-color: transparent;
+}
+
 .thumbnail-img {
 	width: 100%;
 }
@@ -591,6 +604,11 @@ audio::-webkit-media-controls-panel {
 	max-width: 95%;
 }
 
+.spotlight-const-size {
+	width: 600px;
+	height: 338px;
+}
+
 .spotlight-img-active {
 	opacity: 100%;
 	transition: opacity 0.5s;
@@ -614,7 +632,7 @@ audio::-webkit-media-controls-panel {
 #polaroid-desc {
 	margin-top: calc(var(--portrait-size) * .05);
 	margin-bottom: calc(var(--portrait-size) * .05);
-	font-family: "Caveat", Arial;
+	font-family: "Caveat", var(--main-font);
 	font-size: calc(var(--main-font-size) * 1.25);
 }
 

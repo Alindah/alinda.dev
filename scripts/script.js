@@ -282,6 +282,7 @@ function flipIndicator(id, isExpanded) {
 || PROJECT EXPLORER ||
 \*==================*/
 function onClickThumbnail(el) {
+	var sector = el.parentElement.parentElement;
 	var thumbnail = el.getElementsByClassName("thumbnail-img")[0];
 	
 	// If image is already focused, do nothing.
@@ -289,12 +290,12 @@ function onClickThumbnail(el) {
 		return;
 
 	// Otherwise, make it focused and make the currently focused image lose focus.
-	thumbnailLoseFocus(document.getElementsByClassName("img-focused")[0]);
+	thumbnailLoseFocus(sector.getElementsByClassName("img-focused")[0]);
 	thumbnailGainFocus(thumbnail);
 
 	// Change the spotlight image to match the thumbnail.
-	var spotlight_active = document.getElementsByClassName("spotlight-img-active")[0];
-	var spotlight_hidden = document.getElementsByClassName("spotlight-img-hidden")[0];
+	var spotlight_active = sector.getElementsByClassName("spotlight-img-active")[0];
+	var spotlight_hidden = sector.getElementsByClassName("spotlight-img-hidden")[0];
 	var path = thumbnail.getAttribute("src");
 	
 	spotlight_hidden.setAttribute("src", path);
