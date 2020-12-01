@@ -485,6 +485,7 @@ a:selection {
 
 .grid-proj-img {
 	grid-area: img;
+	text-align: center;
 	background-color: var(--grid-color);
 }
 
@@ -597,6 +598,10 @@ audio::-webkit-media-controls-panel {
 
 .spotlight-img {
 	max-width: 95%;
+}
+
+.spotlight-const-size {
+	width: 95%;
 }
 
 .spotlight-img-active {
