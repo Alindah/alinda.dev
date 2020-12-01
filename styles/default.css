@@ -569,6 +569,10 @@ audio::-webkit-media-controls-panel {
 	max-height: var(--thumbnail-max-size);
 }
 
+.thumbnail-container-const {
+	background-color: transparent;
+}
+
 .thumbnail-img {
 	width: 100%;
 }
@@ -601,7 +605,8 @@ audio::-webkit-media-controls-panel {
 }
 
 .spotlight-const-size {
-	width: 95%;
+	width: 600px;
+	height: 338px;
 }
 
 .spotlight-img-active {
