@@ -20,6 +20,9 @@ var isDoneScrolling = true;
 // Collections Variables
 var collapsibleObj = {};
 
+// Misc Variables
+var clickedOnHeaderObj = false;
+
 // Custom Events
 let pageChangeEvent = new CustomEvent("changedPage", {detail: {}});
 
@@ -281,6 +284,25 @@ function flipIndicator(id, isExpanded) {
 /*==================*\
 || PROJECT EXPLORER ||
 \*==================*/
+// Expand or collapse a project tab depending on its display status.
+function expandOrCollapseProject(el) {
+	// Expand tab but do not  collapse it if user pressed on header icon.
+	if (clickedOnHeaderObj) {
+		clickedOnHeaderObj = false;
+		el.parentElement.classList.remove("gc-hidden");
+		return;
+	}
+
+	el.parentElement.classList.toggle("gc-hidden");
+}
+
+function preventTabAction(el) {
+	clickedOnHeaderObj = true;
+}
+
+/*===================*\
+|| PROJECT SPOTLIGHT ||
+\*===================*/
 function onClickThumbnail(el) {
 	var sector = el.parentElement.parentElement;
 	var thumbnail = el.getElementsByClassName("thumbnail-img")[0];

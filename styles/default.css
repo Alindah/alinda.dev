@@ -460,6 +460,7 @@ a:selection {
 	display: flow-root;
 	text-transform: uppercase;
 	background-color: var(--grid-header-color);
+	cursor: pointer;
 }
 
 .grid-proj-desc {
@@ -494,7 +495,7 @@ a:selection {
 	grid-template-columns: 70%;
 	grid-gap: 2px;
 	text-align: left;
-	margin: var(--section-padding);
+	margin: var(--section-padding) / 2;
 	transition: margin 0.5s;
 }
 
@@ -514,6 +515,10 @@ a:selection {
 	'img img img';
 }
 
+.gc-hidden > div:not(.grid-proj-title) {
+	display: none;
+}
+
 .grid-container > div {
 	padding: var(--section-padding);
 }
@@ -524,6 +529,12 @@ a:selection {
 	font-family: var(--header-font);
 	font-size: calc(var(--main-font-size) * 1.25);
 	color: var(--emphasis-dark-text-color);
+}
+
+.grid-proj-title:hover > .grid-section-title {
+	color: var(--main-text-color);
+	transition: color 0.25s;
+	transition-timing-function: ease-out;
 }
 
 .grid-header-obj-container {

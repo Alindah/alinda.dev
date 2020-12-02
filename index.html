@@ -157,11 +157,11 @@
 						<div class="section-color-light">
 							<div class="collapsible-body collapsed">
 								<!-- alinda.dev -->
-								<div class="grid-container gc-v1">
+								<div class="grid-container gc-v1 gc-hidden">
 									<!-- Title -->
-									<div class="grid-proj-title">
+									<div class="grid-proj-title" onclick="expandOrCollapseProject(this)">
 										<div class="grid-section-title">alinda.dev</div>
-										<div class="grid-header-obj-container icon-highlight">
+										<div class="grid-header-obj-container icon-highlight" onclick="preventTabAction(this)">
 											<a href="https://github.com/Alindah/alinda.dev" target="_blank">
 												<svg class="grid-svg-icon" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 24 24">
 													<title>GitHub</title>
@@ -184,9 +184,9 @@
 									</div>
 								</div>
 								<!-- CA: Cloud Machine -->
-								<div class="grid-container gc-v1">
+								<div class="grid-container gc-v1 gc-hidden">
 									<!-- Title -->
-									<div class="grid-proj-title">
+									<div class="grid-proj-title" onclick="expandOrCollapseProject(this)">
 										<div class="grid-section-title">i-Ready: Cloud Machine</div>
 									</div>
 									<!-- Tools -->
@@ -233,9 +233,9 @@
 									</div>
 								</div>
 								<!-- CA: Cupcake -->
-								<div class="grid-container gc-v1">
+								<div class="grid-container gc-v1 gc-hidden">
 									<!-- Title -->
-									<div class="grid-proj-title">
+									<div class="grid-proj-title" onclick="expandOrCollapseProject(this)">
 										<div class="grid-section-title">i-Ready: Cupcake</div>
 									</div>
 									<!-- Tools -->
@@ -327,10 +327,10 @@
 						</div>
 						<div class="section-color-light">
 							<div class="collapsible-body collapsed">
-								<div id="proj-music-danny-rosses" class="grid-container gc-v2 music-project">
-									<div class="grid-proj-title">
+								<div id="proj-music-danny-rosses" class="grid-container gc-v2 gc-hidden music-project">
+									<div class="grid-proj-title" onclick="expandOrCollapseProject(this)">
 										<div class="grid-section-title">Danny & Rosses</div>
-										<div class="grid-header-obj-container icon-highlight audio-player-container">
+										<div class="grid-header-obj-container icon-highlight audio-player-container" onclick="preventTabAction(this)">
 											<audio id="audio-danny-rosses" class="grid-audio-player" src="audio/mp3/Danny_Rosses_Theme.mp3" type="audio/mpeg" onended="pauseAudio(this.id)"></audio>
 											<?xml version="1.0" encoding="iso-8859-1"?>
 											<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
@@ -367,10 +367,10 @@
 										While I've recorded many song ideas in the past, this is my very first completed song. I'm proud of it! I plan to use it for a recreation of a childhood video game idea featuring my two characters, Danny and Rosses, thus I repurposed it to have a more retro video game feel compared to its original concept.
 									</div>
 								</div>
-								<div id="proj-music-dosage" class="grid-container gc-v2 music-project">
-									<div class="grid-proj-title">
+								<div id="proj-music-dosage" class="grid-container gc-v2 gc-hidden music-project">
+									<div class="grid-proj-title" onclick="expandOrCollapseProject(this)">
 										<div class="grid-section-title">Dosage (WIP)</div>
-										<div class="grid-header-obj-container icon-highlight audio-player-container">
+										<div class="grid-header-obj-container icon-highlight audio-player-container" onclick="preventTabAction(this)">
 											<audio id="audio-dosage" class="grid-audio-player" src="audio/mp3/Dosage_WIP2.mp3" type="audio/mpeg" onended="pauseAudio(this.id)"></audio>
 											<?xml version="1.0" encoding="iso-8859-1"?>
 											<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
