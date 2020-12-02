@@ -606,7 +606,7 @@ audio::-webkit-media-controls-panel {
 
 .spotlight-const-size {
 	width: 600px;
-	height: 338px;
+	max-height: 338px;
 }
 
 .spotlight-img-active {
