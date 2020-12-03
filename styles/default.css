@@ -399,7 +399,12 @@ a:selection {
 
 .tab-indicator {
 	float: right;
-	padding-right: 8px;
+	width: 24px;
+	display: inline;
+}
+
+.indicator-collapse {
+	transform: matrix(1, 0, 0, -1, 0, -4);
 }
 
 .collapsible-body {

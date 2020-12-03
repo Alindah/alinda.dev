@@ -274,11 +274,12 @@ function expandTab(el, id) {
 }
 
 function flipIndicator(id, isExpanded) {
-	var expandIn = document.getElementById(id).getElementsByClassName("indicator-expand")[0];
-	var collapseIn = document.getElementById(id).getElementsByClassName("indicator-collapse")[0];
+	var ind = document.getElementById(id).getElementsByClassName("tab-indicator")[0];
 
-	expandIn.style.display = isExpanded ? "inline" : "none";
-	collapseIn.style.display = isExpanded ? "none" : "inline";
+	if (isExpanded)
+		ind.classList.remove("indicator-collapse");
+	else
+		ind.classList.add("indicator-collapse");
 }
 
 /*==================*\
@@ -289,14 +290,13 @@ function expandOrCollapseProject(el) {
 	// Expand tab but do not  collapse it if user pressed on header icon.
 	if (clickedOnHeaderObj) {
 		clickedOnHeaderObj = false;
-		el.parentElement.classList.remove("gc-hidden");
 		return;
 	}
 
 	el.parentElement.classList.toggle("gc-hidden");
 }
 
-function preventTabAction(el) {
+function preventTabAction() {
 	clickedOnHeaderObj = true;
 }
 
@@ -369,7 +369,7 @@ function playAudio(id) {
 			continue;
 
 		if (!allPlayers[i].paused)
-			pauseAudio(allPlayers[i].id);
+			stopAudio(allPlayers[i].id);
 	}
 
 	// Reload so it starts from beginning upon pressing on play again.	
@@ -380,7 +380,7 @@ function playAudio(id) {
 }
 
 // Stop audio and display the play button.
-function pauseAudio(id) {
+function stopAudio(id) {
 	var proj = document.getElementById(id.replace("audio", "proj-music"));
 	document.getElementById(id).pause();
 	flipAudioStatus(proj);
