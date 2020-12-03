@@ -586,15 +586,12 @@ audio::-webkit-media-controls-panel {
 }
 
 .thumbnail-container-const {
-	background-color: transparent;
+	height: auto;
+	min-height: 0;
 }
 
 .thumbnail-img {
 	width: 100%;
-}
-
-.img-focused {
-	
 }
 
 .img-unfocused {
