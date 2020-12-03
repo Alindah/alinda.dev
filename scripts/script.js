@@ -289,14 +289,13 @@ function expandOrCollapseProject(el) {
 	// Expand tab but do not  collapse it if user pressed on header icon.
 	if (clickedOnHeaderObj) {
 		clickedOnHeaderObj = false;
-		el.parentElement.classList.remove("gc-hidden");
 		return;
 	}
 
 	el.parentElement.classList.toggle("gc-hidden");
 }
 
-function preventTabAction(el) {
+function preventTabAction() {
 	clickedOnHeaderObj = true;
 }
 
