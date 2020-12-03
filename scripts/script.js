@@ -368,7 +368,7 @@ function playAudio(id) {
 			continue;
 
 		if (!allPlayers[i].paused)
-			pauseAudio(allPlayers[i].id);
+			stopAudio(allPlayers[i].id);
 	}
 
 	// Reload so it starts from beginning upon pressing on play again.	
@@ -379,7 +379,7 @@ function playAudio(id) {
 }
 
 // Stop audio and display the play button.
-function pauseAudio(id) {
+function stopAudio(id) {
 	var proj = document.getElementById(id.replace("audio", "proj-music"));
 	document.getElementById(id).pause();
 	flipAudioStatus(proj);
