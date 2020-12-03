@@ -405,6 +405,28 @@ a:selection {
 
 .indicator-collapse {
 	transform: matrix(1, 0, 0, -1, 0, -4);
+	animation: anim-indicator-flip-up;
+	animation-duration: 0.35s;
+	animation-timing-function: ease-out;
+}
+
+.indicator-expand {
+	transform: matrix(1, 0, 0, 1, 0, 0);
+	animation: anim-indicator-flip-down;
+	animation-duration: 0.35s;
+	animation-timing-function: ease-out;
+}
+
+@keyframes anim-indicator-flip-up {
+	from {
+		transform: matrix(1, 0, 0, 1, 0, 0);
+	}
+}
+
+@keyframes anim-indicator-flip-down {
+	from {
+		transform: matrix(1, 0, 0, -1, 0, -4);
+	}
 }
 
 .collapsible-body {
@@ -586,15 +608,12 @@ audio::-webkit-media-controls-panel {
 }
 
 .thumbnail-container-const {
-	background-color: transparent;
+	height: auto;
+	min-height: 0;
 }
 
 .thumbnail-img {
 	width: 100%;
-}
-
-.img-focused {
-	
 }
 
 .img-unfocused {

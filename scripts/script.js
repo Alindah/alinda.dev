@@ -276,10 +276,14 @@ function expandTab(el, id) {
 function flipIndicator(id, isExpanded) {
 	var ind = document.getElementById(id).getElementsByClassName("tab-indicator")[0];
 
-	if (isExpanded)
+	if (isExpanded) {
 		ind.classList.remove("indicator-collapse");
-	else
+		ind.classList.add("indicator-expand");
+	}
+	else {
+		ind.classList.remove("indicator-expand");
 		ind.classList.add("indicator-collapse");
+	}
 }
 
 /*==================*\
