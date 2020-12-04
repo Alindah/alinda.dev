@@ -96,7 +96,6 @@ body {
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-blend-mode: overlay;
-	//-webkit-overflow-scrolling: auto;
 }
 
 html, body {
@@ -765,7 +764,7 @@ audio::-webkit-media-controls-panel {
 @media (max-width: 500px) {
 	.grid-container {
 		margin: 0;
-		margin-bottom: var(--section-padding);
+		margin-bottom: var(--section-padding) / 2;
 		transition: margin 0.5s;
 	}
 }
