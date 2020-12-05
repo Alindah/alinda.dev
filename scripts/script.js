@@ -35,7 +35,7 @@ function initialize() {
 	getProjectTabs();
 
 	// Some browsers stay in last position when refreshing the site. Scroll to Home if so.
-	if (pageContainerEl.scrollTop != 0)
+	if (navigator.userAgent.search("Firefox") > 0 && pageContainerEl.scrollTop != 0)
 		scrollToPage("home");
 }
 
@@ -43,7 +43,7 @@ function initialize() {
 // Ex. If using Mac, user is more likely to use Safari or is using a laptop.
 // https://www.learningjquery.com/2017/05/how-to-use-javascript-to-detect-browser
 function isJankyDevice() {
-	return navigator.platform == "MacIntel" || navigator.userAgent.search("Firefox");
+	return navigator.platform == "MacIntel" || navigator.userAgent.search("Firefox") > 0;
 }
 
 function isCompact() {
