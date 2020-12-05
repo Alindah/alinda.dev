@@ -35,7 +35,7 @@ function initialize() {
 	getProjectTabs();
 
 	// Some browsers stay in last position when refreshing the site. Scroll to Home if so.
-	if (pageContainerEl.scrollTop != 0)
+	if (navigator.userAgent.search("Firefox") > 0 && pageContainerEl.scrollTop != 0)
 		scrollToPage("home");
 }
 
