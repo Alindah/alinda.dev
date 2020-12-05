@@ -41,8 +41,9 @@ function initialize() {
 
 // Returns true if visitor is using a device that is not compatible with site.
 // Ex. If using Mac, user is more likely to use Safari or is using a laptop.
+// https://www.learningjquery.com/2017/05/how-to-use-javascript-to-detect-browser
 function isJankyDevice() {
-	return navigator.platform == "MacIntel";
+	return navigator.platform == "MacIntel" || navigator.userAgent.search("Firefox");
 }
 
 function isCompact() {
