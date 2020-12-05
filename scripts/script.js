@@ -43,7 +43,7 @@ function initialize() {
 // Ex. If using Mac, user is more likely to use Safari or is using a laptop.
 // https://www.learningjquery.com/2017/05/how-to-use-javascript-to-detect-browser
 function isJankyDevice() {
-	return navigator.platform == "MacIntel" || navigator.userAgent.search("Firefox");
+	return navigator.platform == "MacIntel" || navigator.userAgent.search("Firefox") > 0;
 }
 
 function isCompact() {
