@@ -716,6 +716,10 @@ audio::-webkit-media-controls-panel {
 		overflow: auto;
 	}
 
+	.decor-dash {
+		display: none;
+	}
+
 	#page-container {
 		scroll-snap-type: none;
 	}
