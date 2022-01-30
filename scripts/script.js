@@ -51,13 +51,10 @@ function isCompact() {
 }
 
 function makeDeviceFriendly() {
-	disableDefaultWheel();
-	/* Removing jump and using "boring" scroll because it seems most people prefer it. To change back, uncomment this and comment out above
 	if (isCompact() || isJankyDevice())
 		enableDefaultWheel();
 	else
 		disableDefaultWheel();
-	*/
 }
 
 function populatePages() {
@@ -158,6 +155,8 @@ function enableDefaultWheel(el = null) {
 }
 
 function disableDefaultWheel() {
+	return;		// Delete this line to reenable. This line was added because users seem to prefer the default scrolling method.
+	
 	if (isCompact() || isJankyDevice())
 		return;
 	
