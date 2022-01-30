@@ -155,8 +155,6 @@ function enableDefaultWheel(el = null) {
 }
 
 function disableDefaultWheel() {
-	return;		// Delete this line to reenable. This line was added because users seem to prefer the default scrolling method.
-	
 	if (isCompact() || isJankyDevice())
 		return;
 	
