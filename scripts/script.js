@@ -51,10 +51,13 @@ function isCompact() {
 }
 
 function makeDeviceFriendly() {
+	disableDefaultWheel();
+	/* Removing jump and using "boring" scroll because it seems most people prefer it. To change back, uncomment this and comment out above
 	if (isCompact() || isJankyDevice())
 		enableDefaultWheel();
 	else
 		disableDefaultWheel();
+	*/
 }
 
 function populatePages() {
