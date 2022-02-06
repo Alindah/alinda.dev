@@ -1,0 +1,17 @@
+/*============\
+|| VARIABLES ||
+\============*/
+:root {
+        --main-text-color: rgb(235, 235, 235);
+        --main-font: Muli, Arial, sans-serif;
+        --main-font-size: 18px;
+  
+        --background-color: rgb(53, 61, 66);
+}
+
+body {
+        font-family: var(--main-font);
+        font-size: var(--main-font-size);
+        color: var(--main-text-color);
+        background-color: var(--background-color);
+}
