@@ -7,6 +7,12 @@
         --main-font-size: 18px;
   
         --background-color: rgb(53, 61, 66);
+        
+        /* Text colors to emphasize */
+	--emphasis-text-color: rgba(134, 204, 230, 1);
+	--emphasis-dark-text-color: rgba(9, 10, 10, 1);
+	--emphasis-highlight-color: rgba(146, 250, 255, 1);
+	--emphasis-dull-color: rgba(49, 109, 132, 1);
 }
 
 body {
@@ -14,4 +20,27 @@ body {
         font-size: var(--main-font-size);
         color: var(--main-text-color);
         background-color: var(--background-color);
+}
+
+a:link {
+	color: var(--emphasis-text-color);
+	transition: color 0.25s;
+}
+
+a:visited {
+	color: var(--emphasis-text-color);
+}
+
+a:hover {
+	color: var(--emphasis-highlight-color);
+	transition: color 0.1s;
+}
+
+a:active {
+	color: var(--emphasis-dull-color);
+	transition: color 0.1s;
+}
+
+a:selection {
+	color: var(--emphasis-highlight-color);
 }
